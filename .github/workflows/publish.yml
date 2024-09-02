@@ -1,0 +1,25 @@
+name: Publish packages to pub.dev
+
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+*'
+
+permissions:
+  id-token: write
+
+jobs:
+  publish_maphero_platform_interface:
+    uses: ./.github/workflows/publish-single.yml
+    with:
+      working-directory: maphero_platform_interface
+  publish_maphero_web:
+    needs: [publish_maphero_platform_interface]
+    uses: ./.github/workflows/publish-single.yml
+    with:
+      working-directory: maphero_web
+  publish_maphero:
+    needs: [publish_maphero_platform_interface, publish_maphero_web]
+    uses: ./.github/workflows/publish-single.yml
+    with:
+      working-directory: maphero

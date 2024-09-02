@@ -1,0 +1,8 @@
+name: maphero_workspace
+
+packages:
+  - example
+  - scripts
+  - maphero
+  - maphero_platform_interface
+  - maphero_web

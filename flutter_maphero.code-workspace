@@ -1,0 +1,20 @@
+{
+    "folders": [
+        {
+            "name": "example",
+            "path": "./example"
+        },
+        {
+            "name": "flutter_maphero",
+            "path": "./flutter_maphero"
+        },
+        {
+            "name": "flutter_maphero_platform_interface",
+            "path": "./flutter_maphero_platform_interface"
+        },
+        {
+            "name": "flutter_maphero_web",
+            "path": "./flutter_maphero_web"
+        }
+    ]
+}
