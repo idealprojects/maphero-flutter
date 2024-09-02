@@ -1,9 +1,6 @@
 # Flutter MapLibre GL
 
 [![Pub Version](https://img.shields.io/pub/v/maphero)](https://pub.dev/packages/maphero)
-[![likes](https://img.shields.io/pub/likes/maphero?logo=flutter)](https://pub.dev/packages/maphero)
-[![Pub Points](https://img.shields.io/pub/points/maphero)](https://pub.dev/packages/maphero/score)
-[![stars](https://badgen.net/github/stars/maplibre/flutter-maplibre-gl?label=stars&color=green&icon=github)](https://github.com/josxha/flutter-maplibre-gl/stargazers)
 
 This Flutter plugin allows to show **embedded interactive and customizable
 vector maps** as a Flutter widget.
@@ -11,18 +8,16 @@ vector maps** as a Flutter widget.
 - This project is a fork
   of [flutter-mapbox-gl](https://github.com/tobrun/flutter-mapbox-gl),
   replacing its usage of Mapbox GL libraries with the open
-  source [MapLibre GL](https://github.com/maplibre) libraries.
+  source [MapHero](https://github.com/idealprojects/maphero-flutter) libraries.
 - The repository has been transferred to
-  the [MapLibre](https://github.com/maplibre)
+  the [MapHero](https://github.com/idealprojects/maphero-flutter)
   organization. You shouldn't see any negative effects, as GitHub automatically
-  redirects references from the old URL to the new URL. Please
-  see [#221](https://github.com/maplibre/flutter-maplibre-gl/issues/221) for
-  more information.
+  redirects references from the old URL to the new URL.
 
 ### Supported Platforms
 
-- Support for **web** through [maplibre-gl-js](https://github.com/maplibre/maplibre-gl-js)
-- Support for **android** and **iOS** through [maplibre-native](https://github.com/maplibre/maplibre-native)
+- Support for **web** through [maphero-js](https://github.com/idealprojects/maphero-js)
+- Support for **android** and **iOS** through [maphero-native](https://github.com/idealprojects/maphero-native)
 
 This project only supports a subset of the API exposed by these libraries.
 
@@ -55,7 +50,7 @@ or add it directly as a dependency to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  maplibre_gl: ^0.19.0
+  maphero: ^0.0.4
 ```
 
 ### iOS
@@ -63,19 +58,6 @@ dependencies:
 There is no specific setup for iOS needed any more to use the package.
 If you added specific lines in an earlier version, you'll have to remove them
 or your project won't build.
-
-<details>
-<summary>View obsolete code</summary>
-
-```ruby
-source 'https://cdn.cocoapods.org/'
-source 'https://github.com/m0nac0/flutter-maplibre-podspecs.git'
-
-pod 'MapLibre'
-pod 'MapLibreAnnotationExtension'
-```
-
-</details>
 
 #### Use the location feature
 
@@ -119,9 +101,8 @@ Include the following JavaScript and CSS files in the `<head>` of
 your `web/index.html` file:
 
 ```html
-<script src='https://unpkg.com/maplibre-gl@^4.3/dist/maplibre-gl.js'></script>
-<link href='https://unpkg.com/maplibre-gl@^4.3/dist/maplibre-gl.css'
-      rel='stylesheet'/>
+<script src='https://maphero.io/maphero.js'></script>
+<link href='https://maphero.io/maphero.css' rel='stylesheet'/>
 ```
 
 ## Map Styles
@@ -154,109 +135,7 @@ https://tiles.example.com/{z}/{x}/{y}.vector.pbf?api_key={your_key}
 - Check
   the [API documentation](https://pub.dev/documentation/maphero/latest/).
 - See example implementations in
-  our [example project](https://github.com/maplibre/flutter-maplibre-gl/tree/main/example).
-- For more information about the MapLibre libraries
-  visit [maplibre-gl-js](https://github.com/maplibre/maplibre-gl-js)
-  and [maplibre-native](https://github.com/maplibre/maplibre-native).
-
-## Getting Help
-
-- **Need help with your code?**: Check
-  the [discussions](https://github.com/maplibre/flutter-maplibre-gl/discussions)
-  on this repo or open a new one.
-  Or look for previous questions on
-  the [#maplibre](https://stackoverflow.com/questions/tagged/maplibre) tag —
-  or [ask a new question](https://stackoverflow.com/questions/tagged/maplibre).
-- **Have a bug to report?**
-  [Open an issue](https://github.com/maplibre/flutter-maplibre-gl/issues/new).
-  If possible, include a full log, code and information which shows the issue.
-- **Have a feature request?**
-  [Open an issue](https://github.com/maplibre/flutter-maplibre-gl/issues/new).
-  Tell us what the feature should do and why you want the feature.
-
-## Common problems & frequent questions
-
-### Loading .mbtiles tile files or sprites/glyphs from the assets shipped with the app
-
-<details>
-  <summary>Click here to expand / hide.</summary>
-
-One approach that has been used successfully to do that is to copy the files
-from the app's assets directory to another directory, e.g. the app's cache
-directory, and then reference that location.
-See e.g. issues https://github.com/maplibre/flutter-maplibre-gl/issues/338
-and https://github.com/maplibre/flutter-maplibre-gl/issues/318
-
----
-</details>
-
-### Avoid Android UnsatisfiedLinkError
-
-<details>
-  <summary>Click here to expand / hide.</summary>
-
-Update buildTypes in `android\app\build.gradle`
-
-```gradle
-buildTypes {
-    release {
-        // other configs
-        ndk {
-            abiFilters 'armeabi-v7a','arm64-v8a','x86_64', 'x86'
-        }
-    }
-}
-```
-
----
-</details>
-
-### iOS app crashes when using location based features
-
-<details>
-  <summary>Click here to expand / hide.</summary>
-
-Please include the `NSLocationWhenInUseUsageDescription` as
-described [here](#location-features)
-
----
-</details>
-
-### Layer is not displayed on IOS, but no error
-
-<details>
-  <summary>Click here to expand / hide.</summary>
-
-Have a look in your `LayerProperties` object, if you supply a `lineColor`
-argument, (or any color argument) the issue might come from here.
-Android supports the following format : `'rgba(192, 192, 255, 1.0)'`, but on
-iOS, this doesn't work!
-
-You have to have the color in the following format : `#C0C0FF`
-
----
-</details>
-
-### iOS crashes with error: `'NSInvalidArgumentException', reason: 'Invalid filter value: filter property must be a string'`
-
-<details>
-  <summary>Click here to expand / hide.</summary>
-
-Check if one of your expression is : `["!has", "value"]`. Android support this
-format, but iOS does not.
-You can replace your expression with :   `["!",["has", "value"] ]` which works
-both in Android and iOS.
-
-Note : iOS will display the
-error : `NSPredicate: Use of 'mgl_does:have:' as an NSExpression function is forbidden`,
-but it seems like the expression still works well.
-
----
-</details>
-
-## Contributing
-
-[Feedback](https://github.com/maplibre/flutter-maplibre-gl/issues),
-contributing pull requests
-and [bug reports](https://github.com/maplibre/flutter-maplibre-gl/issues) are
-very welcome!
+  our [example project](https://github.com/idealprojects/maphero-flutter/tree/main/example).
+- For more information about the MapHero libraries
+  visit [maphero-js](https://github.com/idealprojects/maphero-js)
+  and [maphero-native](https://github.com/idealprojects/maphero-native).
