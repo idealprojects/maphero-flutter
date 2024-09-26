@@ -1,4 +1,4 @@
-maphero-flutter Copyright (c) 2024, MapHero contributors.
+maphero Copyright (c) 2024, MapHero contributors.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
@@ -25,11 +25,11 @@ Redistributions in binary form must reproduce the above copyright notice, this l
 
 ------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------
-This project uses the MapLibre GL native libraries for Android and iOS from https://github.com/maplibre/maplibre-gl-native, which contain the following LICENSE:
+This project uses the MapHero GL native libraries for Android and iOS from https://github.com/maplibre/maplibre-gl-native, which contain the following LICENSE:
 ------------------------------------------------------------------------------------------------------
 BSD 2-Clause License
 
-Copyright (c) 2021 MapLibre contributors
+Copyright (c) 2021 MapHero contributors
 
 Copyright (c) 2018-2021 MapTiler.com
 
@@ -60,7 +60,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------
-This project uses MapLibre GL JS library from https://github.com/maplibre/maplibre-gl-js, which contains the following LICENSE:
+This project uses MapHero GL JS library from https://github.com/MapHero/maplibre-gl-js, which contains the following LICENSE:
 ------------------------------------------------------------------------------------------------------
 Copyright (c) 2020, MapLibre contributors
 

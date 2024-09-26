@@ -2,8 +2,8 @@ name: maphero_example
 description: Demonstrates how to use the maphero plugin.
 publish_to: 'none'
 version: 1.0.0+1
-repository: https://github.com/maplibre/flutter-maplibre-gl
-issue_tracker: https://github.com/maplibre/flutter-maplibre-gl/issues
+repository: https://github.com/idealprojects/maphero-native
+issue_tracker: https://github.com/idealprojects/maphero-native/issues
 
 environment:
   sdk: '>=3.0.0 <4.0.0'
@@ -23,7 +23,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  very_good_analysis: ^5.0.0
+  very_good_analysis: ^6.0.0
 
 flutter:
   uses-material-design: true

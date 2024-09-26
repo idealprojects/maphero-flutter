@@ -1,5 +1,5 @@
 name: maphero
-description: A Flutter plugin for integrating MapLibre Maps inside a Flutter application on Android, iOS and web platforms.
+description: A Flutter plugin for integrating MapHero Maps inside a Flutter application on Android, iOS and web platforms.
 version: 0.0.4
 repository: https://github.com/idealprojects/maphero-flutter
 issue_tracker: https://github.com/idealprojects/maphero-flutter/issues
@@ -16,7 +16,7 @@ dependencies:
   maphero_web: ^0.0.4
 
 dev_dependencies:
-  very_good_analysis: ^5.0.0
+  very_good_analysis: ^6.0.0
 
 flutter:
   plugin:
@@ -31,5 +31,4 @@ flutter:
 
 platforms:
   android:
-  ios:
   web:
