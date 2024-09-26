@@ -16,8 +16,7 @@ dependencies:
     sdk: flutter
   http: ^1.1.0
   location: ^5.0.3
-  maphero:
-    path: ../maphero/
+  maphero: ^0.0.5
   path_provider: ^2.0.15
 
 dev_dependencies:
