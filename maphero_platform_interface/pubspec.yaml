@@ -1,6 +1,6 @@
 name: maphero_platform_interface
 description: A common platform interface for the maphero plugin. This package is only intended to be used by the maplibre_gl package.
-version: 0.0.4
+version: 0.0.5
 repository: https://github.com/idealprojects/maphero-flutter
 issue_tracker: https://github.com/idealprojects/maphero-flutter/issues
 
@@ -11,7 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  meta: ^1.16.0
+  meta: ^1.15.0
 
 dev_dependencies:
   very_good_analysis: ^6.0.0

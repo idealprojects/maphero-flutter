@@ -1,3 +1,6 @@
+## 0.0.5
+- Migrate to MapHero
+
 ## 0.0.4
 - Update Version
 

@@ -1,6 +1,6 @@
 name: maphero_web
 description: Web platform implementation of maphero. This package is only intended to be used by the maphero package.
-version: 0.0.4
+version: 0.0.5
 repository: https://github.com/idealprojects/maphero-flutter
 issue_tracker: https://github.com/idealprojects/maphero-flutter/issues
 
@@ -22,8 +22,8 @@ dependencies:
     sdk: flutter
   image: ^4.0.17
   js: ">=0.6.7 <0.8.0"
-  maphero_platform_interface: ^0.0.4
-  meta: ^1.16.0
+  maphero_platform_interface: ^0.0.5
+  meta: ^1.15.0
 
 dev_dependencies:
   very_good_analysis: ^6.0.0
