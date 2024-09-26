@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import MapLibre
+import MapHero
 
 class OfflineRegion {
     let id: Int
@@ -37,8 +37,8 @@ class OfflineRegion {
         ]
     }
 
-    static func fromOfflinePack(_ pack: MLNOfflinePack) -> OfflineRegion? {
-        guard let region = pack.region as? MLNTilePyramidOfflineRegion,
+    static func fromOfflinePack(_ pack: MHOfflinePack) -> OfflineRegion? {
+        guard let region = pack.region as? MHTilePyramidOfflineRegion,
               let dataObject = try? JSONSerialization.jsonObject(with: pack.context, options: []),
               let dict = dataObject as? [String: Any],
               let id = dict["id"] as? Int,

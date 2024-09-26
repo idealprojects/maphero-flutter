@@ -2,10 +2,10 @@
 // ./scripts/lib/generate.dart
 
 
-import MapLibre
+import MapHero
 
 class LayerPropertyConverter {
-    class func addSymbolProperties(symbolLayer: MLNSymbolStyleLayer, properties: [String: String]) {
+    class func addSymbolProperties(symbolLayer: MHSymbolStyleLayer, properties: [String: String]) {
         for (propertyName, propertyValue) in properties {
             let expression = interpretExpression(propertyName: propertyName, expression: propertyValue)
             switch propertyName {
@@ -129,7 +129,7 @@ class LayerPropertyConverter {
         }
     }
 
-    class func addCircleProperties(circleLayer: MLNCircleStyleLayer, properties: [String: String]) {
+    class func addCircleProperties(circleLayer: MHCircleStyleLayer, properties: [String: String]) {
         for (propertyName, propertyValue) in properties {
             let expression = interpretExpression(propertyName: propertyName, expression: propertyValue)
             switch propertyName {
@@ -167,7 +167,7 @@ class LayerPropertyConverter {
         }
     }
 
-    class func addLineProperties(lineLayer: MLNLineStyleLayer, properties: [String: String]) {
+    class func addLineProperties(lineLayer: MHLineStyleLayer, properties: [String: String]) {
         for (propertyName, propertyValue) in properties {
             let expression = interpretExpression(propertyName: propertyName, expression: propertyValue)
             switch propertyName {
@@ -213,7 +213,7 @@ class LayerPropertyConverter {
         }
     }
 
-    class func addFillProperties(fillLayer: MLNFillStyleLayer, properties: [String: String]) {
+    class func addFillProperties(fillLayer: MHFillStyleLayer, properties: [String: String]) {
         for (propertyName, propertyValue) in properties {
             let expression = interpretExpression(propertyName: propertyName, expression: propertyValue)
             switch propertyName {
@@ -243,7 +243,7 @@ class LayerPropertyConverter {
         }
     }
 
-    class func addFillExtrusionProperties(fillExtrusionLayer: MLNFillExtrusionStyleLayer, properties: [String: String]) {
+    class func addFillExtrusionProperties(fillExtrusionLayer: MHFillExtrusionStyleLayer, properties: [String: String]) {
         for (propertyName, propertyValue) in properties {
             let expression = interpretExpression(propertyName: propertyName, expression: propertyValue)
             switch propertyName {
@@ -273,7 +273,7 @@ class LayerPropertyConverter {
         }
     }
 
-    class func addRasterProperties(rasterLayer: MLNRasterStyleLayer, properties: [String: String]) {
+    class func addRasterProperties(rasterLayer: MHRasterStyleLayer, properties: [String: String]) {
         for (propertyName, propertyValue) in properties {
             let expression = interpretExpression(propertyName: propertyName, expression: propertyValue)
             switch propertyName {
@@ -303,7 +303,7 @@ class LayerPropertyConverter {
         }
     }
 
-    class func addHillshadeProperties(hillshadeLayer: MLNHillshadeStyleLayer, properties: [String: String]) {
+    class func addHillshadeProperties(hillshadeLayer: MHHillshadeStyleLayer, properties: [String: String]) {
         for (propertyName, propertyValue) in properties {
             let expression = interpretExpression(propertyName: propertyName, expression: propertyValue)
             switch propertyName {
@@ -329,7 +329,7 @@ class LayerPropertyConverter {
         }
     }
 
-    class func addHeatmapProperties(heatmapLayer: MLNHeatmapStyleLayer, properties: [String: String]) {
+    class func addHeatmapProperties(heatmapLayer: MHHeatmapStyleLayer, properties: [String: String]) {
         for (propertyName, propertyValue) in properties {
             let expression = interpretExpression(propertyName: propertyName, expression: propertyValue)
             switch propertyName {

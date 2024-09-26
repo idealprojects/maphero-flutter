@@ -1,6 +1,6 @@
 import Flutter
 import Foundation
-import MapLibre
+import MapHero
 import UIKit
 
 public class MapHeroMapsPlugin: NSObject, FlutterPlugin {
@@ -31,7 +31,7 @@ public class MapHeroMapsPlugin: NSObject, FlutterPlugin {
                 }
                 let sessionConfig = URLSessionConfiguration.default
                 sessionConfig.httpAdditionalHeaders = headers // your headers here
-                MLNNetworkConfiguration.sharedManager.sessionConfiguration = sessionConfig
+                MHNetworkConfiguration.sharedManager.sessionConfiguration = sessionConfig
                 result(nil)
             case "installOfflineMapTiles":
                 guard let arguments = methodCall.arguments as? [String: String] else { return }
@@ -131,7 +131,7 @@ public class MapHeroMapsPlugin: NSObject, FlutterPlugin {
         return cachesUrl
     }
 
-    // Copies the "offline" tiles to where MapLibre expects them
+    // Copies the "offline" tiles to where MapHero expects them
     private static func installOfflineMapTiles(registrar: FlutterPluginRegistrar, tilesdb: String) {
         var tilesUrl = getTilesUrl()
         let bundlePath = getTilesDbPath(registrar: registrar, tilesdb: tilesdb)

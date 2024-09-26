@@ -1,8 +1,8 @@
-import MapLibre
+import MapHero
 
-extension MLNMapCamera {
-    func toDict(mapView: MLNMapView) -> [String: Any] {
-        let zoom = MLNZoomLevelForAltitude(
+extension MHMapCamera {
+    func toDict(mapView: MHMapView) -> [String: Any] {
+        let zoom = MHZoomLevelForAltitude(
             altitude,
             pitch,
             centerCoordinate.latitude,
@@ -14,14 +14,14 @@ extension MLNMapCamera {
                 "zoom": zoom]
     }
 
-    static func fromDict(_ dict: [String: Any], mapView: MLNMapView) -> MLNMapCamera? {
+    static func fromDict(_ dict: [String: Any], mapView: MHMapView) -> MHMapCamera? {
         guard let target = dict["target"] as? [Double],
               let zoom = dict["zoom"] as? Double,
               let tilt = dict["tilt"] as? CGFloat,
               let bearing = dict["bearing"] as? Double else { return nil }
         let location = CLLocationCoordinate2D.fromArray(target)
-        let altitude = MLNAltitudeForZoomLevel(zoom, tilt, location.latitude, mapView.frame.size)
-        return MLNMapCamera(
+        let altitude = MHAltitudeForZoomLevel(zoom, tilt, location.latitude, mapView.frame.size)
+        return MHMapCamera(
             lookingAtCenter: location,
             altitude: altitude,
             pitch: tilt,
@@ -64,15 +64,15 @@ extension CLLocationCoordinate2D {
     }
 }
 
-extension MLNCoordinateBounds {
+extension MHCoordinateBounds {
     func toArray() -> [[Double]] {
         return [sw.toArray(), ne.toArray()]
     }
 
-    static func fromArray(_ array: [[Double]]) -> MLNCoordinateBounds {
+    static func fromArray(_ array: [[Double]]) -> MHCoordinateBounds {
         let southwest = CLLocationCoordinate2D.fromArray(array[0])
         let northeast = CLLocationCoordinate2D.fromArray(array[1])
-        return MLNCoordinateBounds(sw: southwest, ne: northeast)
+        return MHCoordinateBounds(sw: southwest, ne: northeast)
     }
 }
 

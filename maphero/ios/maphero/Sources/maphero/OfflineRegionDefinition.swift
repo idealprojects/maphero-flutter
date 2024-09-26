@@ -1,5 +1,5 @@
 import Foundation
-import MapLibre
+import MapHero
 
 class OfflineRegionDefinition {
     let bounds: [[Double]]
@@ -14,8 +14,8 @@ class OfflineRegionDefinition {
         self.maxZoom = maxZoom
     }
 
-    func getBounds() -> MLNCoordinateBounds {
-        return MLNCoordinateBounds(
+    func getBounds() -> MHCoordinateBounds {
+        return MHCoordinateBounds(
             sw: CLLocationCoordinate2D(latitude: bounds[0][0], longitude: bounds[0][1]),
             ne: CLLocationCoordinate2D(latitude: bounds[1][0], longitude: bounds[1][1])
         )
@@ -45,8 +45,8 @@ class OfflineRegionDefinition {
         ]
     }
 
-    func toMLNTilePyramidOfflineRegion() -> MLNTilePyramidOfflineRegion {
-        return MLNTilePyramidOfflineRegion(
+    func toMHTilePyramidOfflineRegion() -> MHTilePyramidOfflineRegion {
+        return MHTilePyramidOfflineRegion(
             styleURL: mapStyleUrl,
             bounds: getBounds(),
             fromZoomLevel: minZoom,

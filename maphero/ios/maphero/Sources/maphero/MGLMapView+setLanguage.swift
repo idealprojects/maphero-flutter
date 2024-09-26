@@ -1,21 +1,21 @@
 //
-//  MLNMapView+setLanguage.swift
+//  MHMapView+setLanguage.swift
 //  maphero
 //
 //  Created by Julian Bissekkou on 09.08.23.
 //
 
 import Foundation
-import MapLibre
+import MapHero
 
-extension MLNMapView {
+extension MHMapView {
     func setMapLanguage(_ language: String) {
         guard let style = style else { return }
         
         let layers = style.layers
         
         for layer in layers {
-            if let symbolLayer = layer as? MLNSymbolStyleLayer {
+            if let symbolLayer = layer as? MHSymbolStyleLayer {
                 if symbolLayer.text == nil {
                     continue
                 }

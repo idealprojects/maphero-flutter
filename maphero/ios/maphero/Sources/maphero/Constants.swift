@@ -1,5 +1,4 @@
-import MapLibre
-
+import MapHero
 /*
  * The mapping is based on the values defined here:
  *  https://docs.mapbox.com/android/api/map-sdk/8.4.0/constant-values.html
@@ -7,47 +6,47 @@ import MapLibre
 
 class Constants {
     static let symbolIconAnchorMapping = [
-        "center": MLNIconAnchor.center,
-        "left": MLNIconAnchor.left,
-        "right": MLNIconAnchor.right,
-        "top": MLNIconAnchor.top,
-        "bottom": MLNIconAnchor.bottom,
-        "top-left": MLNIconAnchor.topLeft,
-        "top-right": MLNIconAnchor.topRight,
-        "bottom-left": MLNIconAnchor.bottomLeft,
-        "bottom-right": MLNIconAnchor.bottomRight,
+        "center": MHIconAnchor.center,
+        "left": MHIconAnchor.left,
+        "right": MHIconAnchor.right,
+        "top": MHIconAnchor.top,
+        "bottom": MHIconAnchor.bottom,
+        "top-left": MHIconAnchor.topLeft,
+        "top-right": MHIconAnchor.topRight,
+        "bottom-left": MHIconAnchor.bottomLeft,
+        "bottom-right": MHIconAnchor.bottomRight,
     ]
 
 
     static let symbolTextJustificationMapping = [
-        "auto": MLNTextJustification.auto,
-        "center": MLNTextJustification.center,
-        "left": MLNTextJustification.left,
-        "right": MLNTextJustification.right,
+        "auto": MHTextJustification.auto,
+        "center": MHTextJustification.center,
+        "left": MHTextJustification.left,
+        "right": MHTextJustification.right,
     ]
 
 
     static let symbolTextAnchorMapping = [
-        "center": MLNTextAnchor.center,
-        "left": MLNTextAnchor.left,
-        "right": MLNTextAnchor.right,
-        "top": MLNTextAnchor.top,
-        "bottom": MLNTextAnchor.bottom,
-        "top-left": MLNTextAnchor.topLeft,
-        "top-right": MLNTextAnchor.topRight,
-        "bottom-left": MLNTextAnchor.bottomLeft,
-        "bottom-right": MLNTextAnchor.bottomRight,
+        "center": MHTextAnchor.center,
+        "left": MHTextAnchor.left,
+        "right": MHTextAnchor.right,
+        "top": MHTextAnchor.top,
+        "bottom": MHTextAnchor.bottom,
+        "top-left": MHTextAnchor.topLeft,
+        "top-right": MHTextAnchor.topRight,
+        "bottom-left": MHTextAnchor.bottomLeft,
+        "bottom-right": MHTextAnchor.bottomRight,
     ]
 
     static let symbolTextTransformationMapping = [
-        "none": MLNTextTransform.none,
-        "lowercase": MLNTextTransform.lowercase,
-        "uppercase": MLNTextTransform.uppercase,
+        "none": MHTextTransform.none,
+        "lowercase": MHTextTransform.lowercase,
+        "uppercase": MHTextTransform.uppercase,
     ]
 
     static let lineJoinMapping = [
-        "bevel": MLNLineJoin.bevel,
-        "miter": MLNLineJoin.miter,
-        "round": MLNLineJoin.round,
+        "bevel": MHLineJoin.bevel,
+        "miter": MHLineJoin.miter,
+        "round": MHLineJoin.round,
     ]
 }

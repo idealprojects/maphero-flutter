@@ -13,7 +13,7 @@ typedef MapCreatedCallback = void Function(MapHeroMapController controller);
 @Deprecated('MapheroMap was renamed to MapHeroMap. ')
 typedef MapheroMap = MapHeroMap;
 
-/// Shows a MapLibre map.
+/// Shows a MapHero map.
 /// Also refer to the documentation of [maphero] and [MapHeroMapController].
 class MapHeroMap extends StatefulWidget {
   MapHeroMap({
@@ -101,7 +101,7 @@ class MapHeroMap extends StatefulWidget {
 
   /// How long a user has to click the map **on iOS** until a long click is registered.
   /// Has no effect on web or Android. Can not be changed at runtime, only the initial value is used.
-  /// If null, the default value of the native MapLibre library / of the OS is used.
+  /// If null, the default value of the native MapHero library / of the OS is used.
   final Duration? iosLongClickDuration;
 
   /// True if the map should show a compass when rotated.
@@ -116,9 +116,9 @@ class MapHeroMap extends StatefulWidget {
   /// Geographical bounding box for the camera target.
   final CameraTargetBounds cameraTargetBounds;
 
-  /// A MapLibre GL style document defining the map's appearance.
+  /// A MapHero style document defining the map's appearance.
   /// The style document specification is at [https://maplibre.org/maplibre-style-spec].
-  /// A short introduction can be found in the documentation of the [maplibre_gl] library.
+  /// A short introduction can be found in the documentation of the [MapHero] library.
   /// The following formats are supported:
   ///
   /// 1. Passing the URL of the map style. This should be a custom map style served remotely using a URL that start with 'http(s)://'
@@ -199,12 +199,12 @@ class MapHeroMap extends StatefulWidget {
   /// Set the layout margins for the Compass
   final Point? compassViewMargins;
 
-  /// Set the position for the MapLibre Attribution Button
-  /// When set to null, the default value of the underlying MapLibre libraries is used,
+  /// Set the position for the MapHero Attribution Button
+  /// When set to null, the default value of the underlying MapHero libraries is used,
   /// which differs depending on the operating system the app is being run on.
   final AttributionButtonPosition? attributionButtonPosition;
 
-  /// Set the layout margins for the MapLibre Attribution Buttons. If you set this
+  /// Set the layout margins for the MapHero Attribution Buttons. If you set this
   /// value, you may also want to set [attributionButtonPosition] to harmonize
   /// the layout between iOS and Android, since the underlying frameworks have
   /// different defaults.
