@@ -67,17 +67,9 @@ android {
             exclude group: 'org.maplibre.gl', module: 'android-sdk'  // exclude default maplibre
         }
 
-        implementation('org.maplibre.gl:maplibre-android-gestures:0.0.3') {
+        implementation('org.maplibre.gl:maplibre-android-gestures:0.0.4') {
             exclude group: 'org.maplibre.gl', module: 'android-sdk'
         }
-
-//        implementation('org.maplibre.gl:android-plugin-annotation-v9:3.0.0') {
-//            exclude group: 'org.maplibre.gl', module: 'android-sdk'
-//        }
-//
-//        implementation('org.maplibre.gl:android-plugin-offline-v9:3.0.0') {
-//            exclude group: 'org.maplibre.gl', module: 'android-sdk'
-//        }
 
         implementation 'com.jakewharton.timber:timber:5.0.1'
         implementation 'com.squareup.okhttp3:okhttp:4.12.0'
