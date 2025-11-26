@@ -50,7 +50,7 @@ or add it directly as a dependency to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  maphero: ^0.0.5
+  maphero: ^0.0.7
 ```
 
 ### iOS

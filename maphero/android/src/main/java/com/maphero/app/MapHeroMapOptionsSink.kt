@@ -3,7 +3,8 @@
 // found in the LICENSE file.
 package com.maphero.app
 
-import org.maplibre.android.geometry.LatLngBounds
+import org.maphero.android.geometry.LatLngBounds
+
 
 /** Receiver of MapHeroMap configuration options.  */
 internal interface MapHeroMapOptionsSink {

@@ -3,7 +3,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'maphero'
-  s.version          = '0.0.1'
+  s.version          = '0.0.10'
   s.summary          = 'A new Flutter plugin.'
   s.description      = <<-DESC
 A new Flutter plugin.
@@ -16,7 +16,7 @@ A new Flutter plugin.
   s.dependency 'Flutter'
   # When updating the dependency version,
   # make sure to also update the version in Package.swift.
-  s.dependency 'MapHero', '0.0.1'
+  s.dependency 'MapHero', '0.0.3'
   s.swift_version = '5.0'
   s.ios.deployment_target = '12.0'
 end

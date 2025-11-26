@@ -1,6 +1,6 @@
 {
   "name": "MapHero",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "license": {
     "type": "BSD",
     "file": "LICENSE.md"
@@ -14,7 +14,7 @@
     "ios": "12.0"
   },
   "source": {
-    "http": "https://github.com/idealprojects/maphero-native/releases/download/0.0.1/MapHero_ios_device.framework.zip",
+    "http": "https://github.com/idealprojects/maphero-native/releases/download/0.0.3/MapHero_ios_device.framework.zip",
     "type": "zip"
   },
   "ios": {

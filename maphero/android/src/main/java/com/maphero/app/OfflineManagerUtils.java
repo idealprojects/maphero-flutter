@@ -3,14 +3,16 @@ package com.maphero.app;
 import android.content.Context;
 import android.util.Log;
 import com.google.gson.Gson;
-import org.maplibre.android.geometry.LatLng;
-import org.maplibre.android.geometry.LatLngBounds;
-import org.maplibre.android.offline.OfflineManager;
-import org.maplibre.android.offline.OfflineRegion;
-import org.maplibre.android.offline.OfflineRegionDefinition;
-import org.maplibre.android.offline.OfflineRegionError;
-import org.maplibre.android.offline.OfflineRegionStatus;
-import org.maplibre.android.offline.OfflineTilePyramidRegionDefinition;
+
+import org.maphero.android.geometry.LatLng;
+import org.maphero.android.geometry.LatLngBounds;
+import org.maphero.android.offline.OfflineManager;
+import org.maphero.android.offline.OfflineRegion;
+import org.maphero.android.offline.OfflineRegionDefinition;
+import org.maphero.android.offline.OfflineRegionError;
+import org.maphero.android.offline.OfflineRegionStatus;
+import org.maphero.android.offline.OfflineTilePyramidRegionDefinition;
+
 import io.flutter.plugin.common.MethodChannel;
 import java.util.ArrayList;
 import java.util.Arrays;

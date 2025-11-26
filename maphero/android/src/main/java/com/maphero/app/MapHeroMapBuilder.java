@@ -7,15 +7,17 @@ package com.maphero.app;
 import android.content.Context;
 import android.view.Gravity;
 import androidx.annotation.NonNull;
-import org.maplibre.android.camera.CameraPosition;
-import org.maplibre.android.geometry.LatLngBounds;
-import org.maplibre.android.maps.MapLibreMapOptions;
+
+import org.maphero.android.camera.CameraPosition;
+import org.maphero.android.geometry.LatLngBounds;
+import org.maphero.android.maps.MapHeroMapOptions;
+
 import io.flutter.plugin.common.BinaryMessenger;
 
 class MapHeroMapBuilder implements MapHeroMapOptionsSink {
   public final String TAG = getClass().getSimpleName();
-  private final MapLibreMapOptions options =
-      new MapLibreMapOptions().attributionEnabled(true).logoEnabled(false).textureMode(true);
+  private final MapHeroMapOptions options =
+      new MapHeroMapOptions().attributionEnabled(true).logoEnabled(false).textureMode(true);
   private boolean trackCameraPosition = false;
   private boolean myLocationEnabled = false;
   private boolean dragEnabled = true;

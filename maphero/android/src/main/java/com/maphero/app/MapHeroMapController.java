@@ -31,51 +31,51 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
-import com.mapbox.android.gestures.AndroidGesturesManager;
-import com.mapbox.android.gestures.MoveGestureDetector;
+import org.maphero.android.camera.CameraPosition;
+import org.maphero.android.camera.CameraUpdate;
+import org.maphero.android.camera.CameraUpdateFactory;
+import org.maphero.android.geometry.LatLng;
+import org.maphero.android.geometry.LatLngBounds;
+import org.maphero.android.geometry.LatLngQuad;
+import org.maphero.android.geometry.VisibleRegion;
+import org.maphero.android.location.LocationComponent;
+import org.maphero.android.location.LocationComponentActivationOptions;
+import org.maphero.android.location.LocationComponentOptions;
+import org.maphero.android.location.OnCameraTrackingChangedListener;
+import org.maphero.android.location.engine.LocationEngineCallback;
+import org.maphero.android.location.engine.LocationEngineResult;
+import org.maphero.android.location.modes.CameraMode;
+import org.maphero.android.location.modes.RenderMode;
+import org.maphero.android.maps.MapHeroMap;
+import org.maphero.android.maps.MapHeroMapOptions;
+import org.maphero.android.maps.MapView;
+import org.maphero.android.maps.OnMapReadyCallback;
+import org.maphero.android.maps.Style;
+import org.maphero.android.offline.OfflineManager;
+import org.maphero.android.style.expressions.Expression;
+import org.maphero.android.style.layers.CircleLayer;
+import org.maphero.android.style.layers.FillExtrusionLayer;
+import org.maphero.android.style.layers.FillLayer;
+import org.maphero.android.style.layers.HeatmapLayer;
+import org.maphero.android.style.layers.HillshadeLayer;
+import org.maphero.android.style.layers.Layer;
+import org.maphero.android.style.layers.LineLayer;
+import org.maphero.android.style.layers.Property;
+import org.maphero.android.style.layers.PropertyFactory;
+import org.maphero.android.style.layers.PropertyValue;
+import org.maphero.android.style.layers.RasterLayer;
+import org.maphero.android.style.layers.SymbolLayer;
+import org.maphero.android.style.sources.CustomGeometrySource;
+import org.maphero.android.style.sources.GeoJsonSource;
+import org.maphero.android.style.sources.ImageSource;
+import org.maphero.android.style.sources.Source;
+import org.maphero.android.style.sources.VectorSource;
+import org.maplibre.android.gestures.AndroidGesturesManager;
+import org.maplibre.android.gestures.MoveGestureDetector;
+import org.maphero.android.constants.MapHeroConstants;
 
-import org.maplibre.android.maps.MapLibreMapOptions;
 import org.maplibre.geojson.Feature;
 import org.maplibre.geojson.FeatureCollection;
-import org.maplibre.android.camera.CameraPosition;
-import org.maplibre.android.camera.CameraUpdate;
-import org.maplibre.android.camera.CameraUpdateFactory;
-import org.maplibre.android.constants.MapLibreConstants;
-import org.maplibre.android.geometry.LatLng;
-import org.maplibre.android.geometry.LatLngBounds;
-import org.maplibre.android.geometry.LatLngQuad;
-import org.maplibre.android.geometry.VisibleRegion;
-import org.maplibre.android.location.LocationComponent;
-import org.maplibre.android.location.LocationComponentActivationOptions;
-import org.maplibre.android.location.LocationComponentOptions;
-import org.maplibre.android.location.OnCameraTrackingChangedListener;
-import org.maplibre.android.location.engine.LocationEngineCallback;
-import org.maplibre.android.location.engine.LocationEngineResult;
-import org.maplibre.android.location.modes.CameraMode;
-import org.maplibre.android.location.modes.RenderMode;
-import org.maplibre.android.maps.MapView;
-import org.maplibre.android.maps.MapLibreMap;
-import org.maplibre.android.maps.OnMapReadyCallback;
-import org.maplibre.android.maps.Style;
-import org.maplibre.android.offline.OfflineManager;
-import org.maplibre.android.style.expressions.Expression;
-import org.maplibre.android.style.layers.CircleLayer;
-import org.maplibre.android.style.layers.FillExtrusionLayer;
-import org.maplibre.android.style.layers.FillLayer;
-import org.maplibre.android.style.layers.HeatmapLayer;
-import org.maplibre.android.style.layers.HillshadeLayer;
-import org.maplibre.android.style.layers.Layer;
-import org.maplibre.android.style.layers.LineLayer;
-import org.maplibre.android.style.layers.Property;
-import org.maplibre.android.style.layers.PropertyValue;
-import org.maplibre.android.style.layers.RasterLayer;
-import org.maplibre.android.style.layers.SymbolLayer;
-import org.maplibre.android.style.layers.PropertyFactory;
-import org.maplibre.android.style.sources.CustomGeometrySource;
-import org.maplibre.android.style.sources.GeoJsonSource;
-import org.maplibre.android.style.sources.ImageSource;
-import org.maplibre.android.style.sources.Source;
-import org.maplibre.android.style.sources.VectorSource;
 
 import io.flutter.plugin.common.BinaryMessenger;
 import io.flutter.plugin.common.MethodCall;
@@ -98,12 +98,12 @@ import java.util.Set;
 @SuppressLint("MissingPermission")
 final class MapHeroMapController
     implements DefaultLifecycleObserver,
-        MapLibreMap.OnCameraIdleListener,
-        MapLibreMap.OnCameraMoveListener,
-        MapLibreMap.OnCameraMoveStartedListener,
+        MapHeroMap.OnCameraIdleListener,
+        MapHeroMap.OnCameraMoveListener,
+        MapHeroMap.OnCameraMoveStartedListener,
         MapView.OnDidBecomeIdleListener,
-        MapLibreMap.OnMapClickListener,
-        MapLibreMap.OnMapLongClickListener,
+        MapHeroMap.OnMapClickListener,
+        MapHeroMap.OnMapLongClickListener,
         MapHeroMapOptionsSink,
         MethodChannel.MethodCallHandler,
         OnMapReadyCallback,
@@ -122,7 +122,7 @@ final class MapHeroMapController
    */
   private FrameLayout mapViewContainer;
   private MapView mapView;
-  private MapLibreMap mapLibreMap;
+  private MapHeroMap mapHeroMap;
   private boolean trackCameraPosition = false;
   private boolean myLocationEnabled = false;
   private int myLocationTrackingMode = 0;
@@ -158,11 +158,11 @@ final class MapHeroMapController
           updateMyLocationEnabled();
 
           if (null != bounds) {
-            mapLibreMap.setLatLngBoundsForCameraTarget(bounds);
+            mapHeroMap.setLatLngBoundsForCameraTarget(bounds);
           }
 
-          mapLibreMap.addOnMapClickListener(MapHeroMapController.this);
-          mapLibreMap.addOnMapLongClickListener(MapHeroMapController.this);
+          mapHeroMap.addOnMapClickListener(MapHeroMapController.this);
+          mapHeroMap.addOnMapLongClickListener(MapHeroMapController.this);
 
           methodChannel.invokeMethod("map#onStyleLoaded", null);
         }
@@ -173,10 +173,10 @@ final class MapHeroMapController
       Context context,
       BinaryMessenger messenger,
       MapHeroMapsPlugin.LifecycleProvider lifecycleProvider,
-      MapLibreMapOptions options,
+      MapHeroMapOptions options,
       String styleStringInitial,
       boolean dragEnabled) {
-    MapHeroUtils.getMapLibre(context);
+    MapHeroUtils.getMapHero(context);
     this.id = id;
     this.context = context;
     this.dragEnabled = dragEnabled;
@@ -207,27 +207,27 @@ final class MapHeroMapController
   }
 
   private void moveCamera(CameraUpdate cameraUpdate) {
-    mapLibreMap.moveCamera(cameraUpdate);
+    mapHeroMap.moveCamera(cameraUpdate);
   }
 
   private void animateCamera(CameraUpdate cameraUpdate) {
-    mapLibreMap.animateCamera(cameraUpdate);
+    mapHeroMap.animateCamera(cameraUpdate);
   }
 
   private CameraPosition getCameraPosition() {
-    return trackCameraPosition ? mapLibreMap.getCameraPosition() : null;
+    return trackCameraPosition ? mapHeroMap.getCameraPosition() : null;
   }
 
   @Override
-  public void onMapReady(MapLibreMap mapLibreMap) {
-    this.mapLibreMap = mapLibreMap;
+  public void onMapReady(MapHeroMap mapHeroMap) {
+    this.mapHeroMap = mapHeroMap;
     if (mapReadyResult != null) {
       mapReadyResult.success(null);
       mapReadyResult = null;
     }
-    mapLibreMap.addOnCameraMoveStartedListener(this);
-    mapLibreMap.addOnCameraMoveListener(this);
-    mapLibreMap.addOnCameraIdleListener(this);
+    mapHeroMap.addOnCameraMoveStartedListener(this);
+    mapHeroMap.addOnCameraMoveListener(this);
+    mapHeroMap.addOnCameraIdleListener(this);
 
     if (androidGesturesManager != null) {
       androidGesturesManager.setMoveGestureListener(new MoveGestureListener());
@@ -247,7 +247,7 @@ final class MapHeroMapController
           DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
           final Bitmap bitmap = getScaledImage(id, displayMetrics.density);
           if (bitmap != null) {
-            mapLibreMap.getStyle().addImage(id, bitmap);
+            mapHeroMap.getStyle().addImage(id, bitmap);
           }
         });
 
@@ -266,19 +266,19 @@ final class MapHeroMapController
     if (styleString == null || styleString.isEmpty()) {
       Log.e(TAG, "setStyleString - string empty or null");
     } else if (styleString.startsWith("{") || styleString.startsWith("[")) {
-      mapLibreMap.setStyle(new Style.Builder().fromJson(styleString), onStyleLoadedCallback);
+      mapHeroMap.setStyle(new Style.Builder().fromJson(styleString), onStyleLoadedCallback);
     } else if (styleString.startsWith("/")) {
       // Absolute path
-      mapLibreMap.setStyle(
+      mapHeroMap.setStyle(
           new Style.Builder().fromUri("file://" + styleString), onStyleLoadedCallback);
     } else if (!styleString.startsWith("http://")
         && !styleString.startsWith("https://")
         && !styleString.startsWith("mapbox://")) {
       // We are assuming that the style will be loaded from an asset here.
       String key = MapHeroMapsPlugin.flutterAssets.getAssetFilePathByName(styleString);
-      mapLibreMap.setStyle(new Style.Builder().fromUri("asset://" + key), onStyleLoadedCallback);
+      mapHeroMap.setStyle(new Style.Builder().fromUri("asset://" + key), onStyleLoadedCallback);
     } else {
-      mapLibreMap.setStyle(new Style.Builder().fromUri(styleString), onStyleLoadedCallback);
+      mapHeroMap.setStyle(new Style.Builder().fromUri(styleString), onStyleLoadedCallback);
     }
   }
 
@@ -288,7 +288,7 @@ final class MapHeroMapController
   private void enableLocationComponent(@NonNull Style style) {
     if (hasLocationPermission()) {
 
-      locationComponent = mapLibreMap.getLocationComponent();
+      locationComponent = mapHeroMap.getLocationComponent();
 
       LocationComponentActivationOptions options =
               LocationComponentActivationOptions
@@ -664,7 +664,7 @@ final class MapHeroMapController
       Collections.reverse(layersInOrder);
 
       for (String id : layersInOrder) {
-        List<Feature> features = mapLibreMap.queryRenderedFeatures(in, id);
+        List<Feature> features = mapHeroMap.queryRenderedFeatures(in, id);
         if (!features.isEmpty()) {
           return features.get(0);
         }
@@ -678,7 +678,7 @@ final class MapHeroMapController
 
     switch (call.method) {
       case "map#waitForMap":
-        if (mapLibreMap != null) {
+        if (mapHeroMap != null) {
           result.success(null);
           return;
         }
@@ -701,7 +701,7 @@ final class MapHeroMapController
         {
           try {
             final Locale deviceLocale = Locale.getDefault();
-            MapHeroMapUtils.setMapLanguage(mapLibreMap, deviceLocale.getLanguage());
+            MapHeroMapUtils.setMapLanguage(mapHeroMap, deviceLocale.getLanguage());
 
             result.success(null);
           } catch (RuntimeException exception) {
@@ -731,7 +731,7 @@ final class MapHeroMapController
         {
           final String language = call.argument("language");
           try {
-            MapHeroMapUtils.setMapLanguage(mapLibreMap, language);
+            MapHeroMapUtils.setMapLanguage(mapHeroMap, language);
 
             result.success(null);
           } catch (RuntimeException exception) {
@@ -743,7 +743,7 @@ final class MapHeroMapController
       case "map#getVisibleRegion":
         {
           Map<String, Object> reply = new HashMap<>();
-          VisibleRegion visibleRegion = mapLibreMap.getProjection().getVisibleRegion();
+          VisibleRegion visibleRegion = mapHeroMap.getProjection().getVisibleRegion();
           reply.put(
               "sw",
               Arrays.asList(
@@ -760,7 +760,7 @@ final class MapHeroMapController
         {
           Map<String, Object> reply = new HashMap<>();
           PointF pointf =
-              mapLibreMap
+              mapHeroMap
                   .getProjection()
                   .toScreenLocation(
                       new LatLng(call.argument("latitude"), call.argument("longitude")));
@@ -776,7 +776,7 @@ final class MapHeroMapController
 
           for (int i = 0; i < param.length; i += 2) {
             PointF pointf =
-                mapLibreMap.getProjection().toScreenLocation(new LatLng(param[i], param[i + 1]));
+                mapHeroMap.getProjection().toScreenLocation(new LatLng(param[i], param[i + 1]));
             reply[i] = pointf.x;
             reply[i + 1] = pointf.y;
           }
@@ -788,7 +788,7 @@ final class MapHeroMapController
         {
           Map<String, Object> reply = new HashMap<>();
           LatLng latlng =
-              mapLibreMap
+              mapHeroMap
                   .getProjection()
                   .fromScreenLocation(
                       new PointF(
@@ -803,7 +803,7 @@ final class MapHeroMapController
         {
           Map<String, Object> reply = new HashMap<>();
           Double retVal =
-              mapLibreMap
+              mapHeroMap
                   .getProjection()
                   .getMetersPerPixelAtLatitude((Double) call.argument("latitude"));
           reply.put("metersperpixel", retVal);
@@ -813,10 +813,10 @@ final class MapHeroMapController
       case "camera#move":
         {
           final CameraUpdate cameraUpdate =
-              Convert.toCameraUpdate(call.argument("cameraUpdate"), mapLibreMap, density);
+              Convert.toCameraUpdate(call.argument("cameraUpdate"), mapHeroMap, density);
           if (cameraUpdate != null) {
             // camera transformation not handled yet
-            mapLibreMap.moveCamera(
+            mapHeroMap.moveCamera(
                 cameraUpdate,
                 new OnCameraMoveFinishedListener() {
                   @Override
@@ -841,7 +841,7 @@ final class MapHeroMapController
       case "camera#animate":
         {
           final CameraUpdate cameraUpdate =
-              Convert.toCameraUpdate(call.argument("cameraUpdate"), mapLibreMap, density);
+              Convert.toCameraUpdate(call.argument("cameraUpdate"), mapHeroMap, density);
           final Integer duration = call.argument("duration");
 
           final OnCameraMoveFinishedListener onCameraMoveFinishedListener =
@@ -860,10 +860,10 @@ final class MapHeroMapController
               };
           if (cameraUpdate != null && duration != null) {
             // camera transformation not handled yet
-            mapLibreMap.animateCamera(cameraUpdate, duration, onCameraMoveFinishedListener);
+            mapHeroMap.animateCamera(cameraUpdate, duration, onCameraMoveFinishedListener);
           } else if (cameraUpdate != null) {
             // camera transformation not handled yet
-            mapLibreMap.animateCamera(cameraUpdate, onCameraMoveFinishedListener);
+            mapHeroMap.animateCamera(cameraUpdate, onCameraMoveFinishedListener);
           } else {
             result.success(false);
           }
@@ -888,7 +888,7 @@ final class MapHeroMapController
             Double x = call.argument("x");
             Double y = call.argument("y");
             PointF pixel = new PointF(x.floatValue(), y.floatValue());
-            features = mapLibreMap.queryRenderedFeatures(pixel, filterExpression, layerIds);
+            features = mapHeroMap.queryRenderedFeatures(pixel, filterExpression, layerIds);
           } else {
             Double left = call.argument("left");
             Double top = call.argument("top");
@@ -897,7 +897,7 @@ final class MapHeroMapController
             RectF rectF =
                 new RectF(
                     left.floatValue(), top.floatValue(), right.floatValue(), bottom.floatValue());
-            features = mapLibreMap.queryRenderedFeatures(rectF, filterExpression, layerIds);
+            features = mapHeroMap.queryRenderedFeatures(rectF, filterExpression, layerIds);
           }
           List<String> featuresJson = new ArrayList<>();
           for (Feature feature : features) {
@@ -1227,7 +1227,7 @@ final class MapHeroMapController
           if (this.myLocationEnabled && locationComponent != null) {
             Map<String, Object> reply = new HashMap<>();
 
-            mapLibreMap.getLocationComponent().getLocationEngine().getLastLocation(
+            mapHeroMap.getLocationComponent().getLocationEngine().getLastLocation(
                 new LocationEngineCallback<LocationEngineResult>() {
                   @Override
                   public void onSuccess(LocationEngineResult locationEngineResult) {
@@ -1409,7 +1409,7 @@ final class MapHeroMapController
                   .include(locationOne) // Northeast
                   .include(locationTwo) // Southwest
                   .build();
-          mapLibreMap.easeCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds,
+          mapHeroMap.easeCamera(CameraUpdateFactory.newLatLngBounds(latLngBounds,
                   padding), 200);
 
           break;
@@ -1597,7 +1597,7 @@ final class MapHeroMapController
   @Override
   public void onCameraMoveStarted(int reason) {
     final Map<String, Object> arguments = new HashMap<>(2);
-    boolean isGesture = reason == MapLibreMap.OnCameraMoveStartedListener.REASON_API_GESTURE;
+    boolean isGesture = reason == MapHeroMap.OnCameraMoveStartedListener.REASON_API_GESTURE;
     arguments.put("isGesture", isGesture);
     methodChannel.invokeMethod("camera#onMoveStarted", arguments);
   }
@@ -1608,7 +1608,7 @@ final class MapHeroMapController
       return;
     }
     final Map<String, Object> arguments = new HashMap<>(2);
-    arguments.put("position", Convert.toJson(mapLibreMap.getCameraPosition()));
+    arguments.put("position", Convert.toJson(mapHeroMap.getCameraPosition()));
     methodChannel.invokeMethod("camera#onMove", arguments);
   }
 
@@ -1616,7 +1616,7 @@ final class MapHeroMapController
   public void onCameraIdle() {
     final Map<String, Object> arguments = new HashMap<>(2);
     if (trackCameraPosition) {
-      arguments.put("position", Convert.toJson(mapLibreMap.getCameraPosition()));
+      arguments.put("position", Convert.toJson(mapHeroMap.getCameraPosition()));
     }
     methodChannel.invokeMethod("camera#onIdle", arguments);
   }
@@ -1658,7 +1658,7 @@ final class MapHeroMapController
 
   @Override
   public boolean onMapClick(@NonNull LatLng point) {
-    PointF pointf = mapLibreMap.getProjection().toScreenLocation(point);
+    PointF pointf = mapHeroMap.getProjection().toScreenLocation(point);
     RectF rectF = new RectF(pointf.x - 10, pointf.y - 10, pointf.x + 10, pointf.y + 10);
     Feature feature = firstFeatureOnLayers(rectF);
     final Map<String, Object> arguments = new HashMap<>();
@@ -1677,7 +1677,7 @@ final class MapHeroMapController
 
   @Override
   public boolean onMapLongClick(@NonNull LatLng point) {
-    PointF pointf = mapLibreMap.getProjection().toScreenLocation(point);
+    PointF pointf = mapHeroMap.getProjection().toScreenLocation(point);
     final Map<String, Object> arguments = new HashMap<>(5);
     arguments.put("x", pointf.x);
     arguments.put("y", pointf.y);
@@ -1704,7 +1704,7 @@ final class MapHeroMapController
   private void moveCamera(CameraUpdate cameraUpdate, MethodChannel.Result result) {
     if (cameraUpdate != null) {
       // camera transformation not handled yet
-      mapLibreMap.moveCamera(
+      mapHeroMap.moveCamera(
           cameraUpdate,
           new OnCameraMoveFinishedListener() {
             @Override
@@ -1744,10 +1744,10 @@ final class MapHeroMapController
         };
     if (cameraUpdate != null && duration != null) {
       // camera transformation not handled yet
-      mapLibreMap.animateCamera(cameraUpdate, duration, onCameraMoveFinishedListener);
+      mapHeroMap.animateCamera(cameraUpdate, duration, onCameraMoveFinishedListener);
     } else if (cameraUpdate != null) {
       // camera transformation not handled yet
-      mapLibreMap.animateCamera(cameraUpdate, onCameraMoveFinishedListener);
+      mapHeroMap.animateCamera(cameraUpdate, onCameraMoveFinishedListener);
     } else {
       result.success(false);
     }
@@ -1846,7 +1846,7 @@ final class MapHeroMapController
 
   @Override
   public void setCompassEnabled(boolean compassEnabled) {
-    mapLibreMap.getUiSettings().setCompassEnabled(compassEnabled);
+    mapHeroMap.getUiSettings().setCompassEnabled(compassEnabled);
   }
 
   @Override
@@ -1856,28 +1856,28 @@ final class MapHeroMapController
 
   @Override
   public void setRotateGesturesEnabled(boolean rotateGesturesEnabled) {
-    mapLibreMap.getUiSettings().setRotateGesturesEnabled(rotateGesturesEnabled);
+    mapHeroMap.getUiSettings().setRotateGesturesEnabled(rotateGesturesEnabled);
   }
 
   @Override
   public void setScrollGesturesEnabled(boolean scrollGesturesEnabled) {
-    mapLibreMap.getUiSettings().setScrollGesturesEnabled(scrollGesturesEnabled);
+    mapHeroMap.getUiSettings().setScrollGesturesEnabled(scrollGesturesEnabled);
   }
 
   @Override
   public void setTiltGesturesEnabled(boolean tiltGesturesEnabled) {
-    mapLibreMap.getUiSettings().setTiltGesturesEnabled(tiltGesturesEnabled);
+    mapHeroMap.getUiSettings().setTiltGesturesEnabled(tiltGesturesEnabled);
   }
 
   @Override
   public void setMinMaxZoomPreference(Float min, Float max) {
-    mapLibreMap.setMinZoomPreference(min != null ? min : MapLibreConstants.MINIMUM_ZOOM);
-    mapLibreMap.setMaxZoomPreference(max != null ? max : MapLibreConstants.MAXIMUM_ZOOM);
+    mapHeroMap.setMinZoomPreference(min != null ? min : MapHeroConstants.MINIMUM_ZOOM);
+    mapHeroMap.setMaxZoomPreference(max != null ? max : MapHeroConstants.MAXIMUM_ZOOM);
   }
 
   @Override
   public void setZoomGesturesEnabled(boolean zoomGesturesEnabled) {
-    mapLibreMap.getUiSettings().setZoomGesturesEnabled(zoomGesturesEnabled);
+    mapHeroMap.getUiSettings().setZoomGesturesEnabled(zoomGesturesEnabled);
   }
 
   @Override
@@ -1886,14 +1886,14 @@ final class MapHeroMapController
       return;
     }
     this.myLocationEnabled = myLocationEnabled;
-    if (mapLibreMap != null) {
+    if (mapHeroMap != null) {
       updateMyLocationEnabled();
     }
   }
 
   @Override
   public void setMyLocationTrackingMode(int myLocationTrackingMode) {
-    if (mapLibreMap != null) {
+    if (mapHeroMap != null) {
       // ensure that location is trackable
       updateMyLocationEnabled();
     }
@@ -1901,7 +1901,7 @@ final class MapHeroMapController
       return;
     }
     this.myLocationTrackingMode = myLocationTrackingMode;
-    if (mapLibreMap != null && locationComponent != null) {
+    if (mapHeroMap != null && locationComponent != null) {
       updateMyLocationTrackingMode();
     }
   }
@@ -1912,49 +1912,49 @@ final class MapHeroMapController
       return;
     }
     this.myLocationRenderMode = myLocationRenderMode;
-    if (mapLibreMap != null && locationComponent != null) {
+    if (mapHeroMap != null && locationComponent != null) {
       updateMyLocationRenderMode();
     }
   }
 
   public void setLogoViewMargins(int x, int y) {
-    mapLibreMap.getUiSettings().setLogoMargins(x, 0, 0, y);
+    mapHeroMap.getUiSettings().setLogoMargins(x, 0, 0, y);
   }
 
   @Override
   public void setCompassGravity(int gravity) {
     switch (gravity) {
       case 0:
-        mapLibreMap.getUiSettings().setCompassGravity(Gravity.TOP | Gravity.START);
+        mapHeroMap.getUiSettings().setCompassGravity(Gravity.TOP | Gravity.START);
         break;
       default:
       case 1:
-        mapLibreMap.getUiSettings().setCompassGravity(Gravity.TOP | Gravity.END);
+        mapHeroMap.getUiSettings().setCompassGravity(Gravity.TOP | Gravity.END);
         break;
       case 2:
-        mapLibreMap.getUiSettings().setCompassGravity(Gravity.BOTTOM | Gravity.START);
+        mapHeroMap.getUiSettings().setCompassGravity(Gravity.BOTTOM | Gravity.START);
         break;
       case 3:
-        mapLibreMap.getUiSettings().setCompassGravity(Gravity.BOTTOM | Gravity.END);
+        mapHeroMap.getUiSettings().setCompassGravity(Gravity.BOTTOM | Gravity.END);
         break;
     }
   }
 
   @Override
   public void setCompassViewMargins(int x, int y) {
-    switch (mapLibreMap.getUiSettings().getCompassGravity()) {
+    switch (mapHeroMap.getUiSettings().getCompassGravity()) {
       case Gravity.TOP | Gravity.START:
-        mapLibreMap.getUiSettings().setCompassMargins(x, y, 0, 0);
+        mapHeroMap.getUiSettings().setCompassMargins(x, y, 0, 0);
         break;
       default:
       case Gravity.TOP | Gravity.END:
-        mapLibreMap.getUiSettings().setCompassMargins(0, y, x, 0);
+        mapHeroMap.getUiSettings().setCompassMargins(0, y, x, 0);
         break;
       case Gravity.BOTTOM | Gravity.START:
-        mapLibreMap.getUiSettings().setCompassMargins(x, 0, 0, y);
+        mapHeroMap.getUiSettings().setCompassMargins(x, 0, 0, y);
         break;
       case Gravity.BOTTOM | Gravity.END:
-        mapLibreMap.getUiSettings().setCompassMargins(0, 0, x, y);
+        mapHeroMap.getUiSettings().setCompassMargins(0, 0, x, y);
         break;
     }
   }
@@ -1963,43 +1963,43 @@ final class MapHeroMapController
   public void setAttributionButtonGravity(int gravity) {
     switch (gravity) {
       case 0:
-        mapLibreMap.getUiSettings().setAttributionGravity(Gravity.TOP | Gravity.START);
+        mapHeroMap.getUiSettings().setAttributionGravity(Gravity.TOP | Gravity.START);
         break;
       default:
       case 1:
-        mapLibreMap.getUiSettings().setAttributionGravity(Gravity.TOP | Gravity.END);
+        mapHeroMap.getUiSettings().setAttributionGravity(Gravity.TOP | Gravity.END);
         break;
       case 2:
-        mapLibreMap.getUiSettings().setAttributionGravity(Gravity.BOTTOM | Gravity.START);
+        mapHeroMap.getUiSettings().setAttributionGravity(Gravity.BOTTOM | Gravity.START);
         break;
       case 3:
-        mapLibreMap.getUiSettings().setAttributionGravity(Gravity.BOTTOM | Gravity.END);
+        mapHeroMap.getUiSettings().setAttributionGravity(Gravity.BOTTOM | Gravity.END);
         break;
     }
   }
 
   @Override
   public void setAttributionButtonMargins(int x, int y) {
-    switch (mapLibreMap.getUiSettings().getAttributionGravity()) {
+    switch (mapHeroMap.getUiSettings().getAttributionGravity()) {
       case Gravity.TOP | Gravity.START:
-        mapLibreMap.getUiSettings().setAttributionMargins(x, y, 0, 0);
+        mapHeroMap.getUiSettings().setAttributionMargins(x, y, 0, 0);
         break;
       default:
       case Gravity.TOP | Gravity.END:
-        mapLibreMap.getUiSettings().setAttributionMargins(0, y, x, 0);
+        mapHeroMap.getUiSettings().setAttributionMargins(0, y, x, 0);
         break;
       case Gravity.BOTTOM | Gravity.START:
-        mapLibreMap.getUiSettings().setAttributionMargins(x, 0, 0, y);
+        mapHeroMap.getUiSettings().setAttributionMargins(x, 0, 0, y);
         break;
       case Gravity.BOTTOM | Gravity.END:
-        mapLibreMap.getUiSettings().setAttributionMargins(0, 0, x, y);
+        mapHeroMap.getUiSettings().setAttributionMargins(0, 0, x, y);
         break;
     }
   }
 
   private void updateMyLocationEnabled() {
     if (this.locationComponent == null && myLocationEnabled) {
-      enableLocationComponent(mapLibreMap.getStyle());
+      enableLocationComponent(mapHeroMap.getStyle());
     }
 
     if (myLocationEnabled) {
@@ -2136,7 +2136,7 @@ final class MapHeroMapController
     if (detector.getPreviousEvent().getActionMasked() == MotionEvent.ACTION_DOWN
         && detector.getPointersCount() == 1) {
       PointF pointf = detector.getFocalPoint();
-      LatLng origin = mapLibreMap.getProjection().fromScreenLocation(pointf);
+      LatLng origin = mapHeroMap.getProjection().fromScreenLocation(pointf);
       RectF rectF = new RectF(pointf.x - 10, pointf.y - 10, pointf.x + 10, pointf.y + 10);
       Feature feature = firstFeatureOnLayers(rectF);
       if (feature != null && startDragging(feature, origin)) {
@@ -2148,7 +2148,7 @@ final class MapHeroMapController
   }
 
   private void invokeFeatureDrag(PointF pointf, String eventType) {
-    LatLng current = mapLibreMap.getProjection().fromScreenLocation(pointf);
+    LatLng current = mapHeroMap.getProjection().fromScreenLocation(pointf);
 
     final Map<String, Object> arguments = new HashMap<>(9);
     arguments.put("id", draggedFeature.id());
@@ -2205,7 +2205,7 @@ final class MapHeroMapController
   }
 
   /** Simple Listener to listen for the status of camera movements. */
-  public class OnCameraMoveFinishedListener implements MapLibreMap.CancelableCallback {
+  public class OnCameraMoveFinishedListener implements MapHeroMap.CancelableCallback {
     @Override
     public void onFinish() {}
 

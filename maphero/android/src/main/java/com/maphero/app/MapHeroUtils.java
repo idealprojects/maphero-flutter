@@ -1,12 +1,13 @@
 package com.maphero.app;
 
 import android.content.Context;
-import org.maplibre.android.MapLibre;
+
+import org.maphero.android.MapHero;
 
 abstract class MapHeroUtils {
   private static final String TAG = "MapHeroMapController";
 
-  static MapLibre getMapLibre(Context context) {
-    return MapLibre.getInstance(context);
+  static MapHero getMapHero(Context context) {
+    return MapHero.getInstance(context);
   }
 }

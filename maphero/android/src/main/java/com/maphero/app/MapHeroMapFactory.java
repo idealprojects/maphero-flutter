@@ -4,7 +4,8 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 
-import org.maplibre.android.camera.CameraPosition;
+import org.maphero.android.camera.CameraPosition;
+
 import io.flutter.plugin.common.BinaryMessenger;
 import io.flutter.plugin.common.StandardMessageCodec;
 import io.flutter.plugin.platform.PlatformView;

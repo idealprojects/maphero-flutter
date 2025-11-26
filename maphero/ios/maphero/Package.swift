@@ -14,13 +14,13 @@ let package = Package(
     dependencies: [
         // When updating the dependency version,
         // make sure to also update the version in maphero.podspec.
-        .package(url: "https://github.com/idealprojects/maphero-ios.git", exact: "0.0.1"),
+        .package(url: "https://github.com/idealprojects/maphero-ios.git", exact: "0.0.3"),
     ],
     targets: [
         .target(
             name: "maphero",
             dependencies: [
-                .product(name: "MapHero", package: "maphero-ios")
+//                 .product(name: "MapHero", package: "maphero-ios")
             ],
             cSettings: [
                 .headerSearchPath("include/maphero")

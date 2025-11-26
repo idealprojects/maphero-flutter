@@ -7,13 +7,15 @@ package com.maphero.app;
 import android.content.Context;
 import android.graphics.Point;
 import android.util.DisplayMetrics;
+
+import org.maphero.android.camera.CameraPosition;
+import org.maphero.android.camera.CameraUpdate;
+import org.maphero.android.camera.CameraUpdateFactory;
+import org.maphero.android.geometry.LatLng;
+import org.maphero.android.geometry.LatLngBounds;
+import org.maphero.android.maps.MapHeroMap;
 import org.maplibre.geojson.Polygon;
-import org.maplibre.android.camera.CameraPosition;
-import org.maplibre.android.camera.CameraUpdate;
-import org.maplibre.android.camera.CameraUpdateFactory;
-import org.maplibre.android.geometry.LatLng;
-import org.maplibre.android.geometry.LatLngBounds;
-import org.maplibre.android.maps.MapLibreMap;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -43,7 +45,7 @@ class Convert {
     return toString(toList(o).get(0)).equals("scrollBy");
   }
 
-  static CameraUpdate toCameraUpdate(Object o, MapLibreMap maplibreMap, float density) {
+  static CameraUpdate toCameraUpdate(Object o, MapHeroMap maplibreMap, float density) {
     final List<?> data = toList(o);
     switch (toString(data.get(0))) {
       case "newCameraPosition":

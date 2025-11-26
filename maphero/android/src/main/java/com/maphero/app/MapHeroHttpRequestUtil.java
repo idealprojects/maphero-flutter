@@ -1,11 +1,12 @@
 package com.maphero.app;
 
-import org.maplibre.android.module.http.HttpRequestUtil;
 import io.flutter.plugin.common.MethodChannel;
 import java.util.Map;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import android.util.Log;
+
+import org.maphero.android.module.http.HttpRequestUtil;
 
 abstract class MapHeroHttpRequestUtil {
 

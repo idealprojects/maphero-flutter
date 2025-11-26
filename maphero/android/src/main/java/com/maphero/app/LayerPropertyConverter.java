@@ -3,9 +3,6 @@
 
 package com.maphero.app;
 
-import org.maplibre.android.style.expressions.Expression;
-import org.maplibre.android.style.layers.PropertyFactory;
-import org.maplibre.android.style.layers.PropertyValue;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -17,6 +14,10 @@ import com.google.gson.JsonPrimitive;
 
 
 import static com.maphero.app.Convert.toMap;
+
+import org.maphero.android.style.expressions.Expression;
+import org.maphero.android.style.layers.PropertyFactory;
+import org.maphero.android.style.layers.PropertyValue;
 
 class LayerPropertyConverter {
   static PropertyValue[] interpretSymbolLayerProperties(Object o) {
