@@ -27,7 +27,6 @@ Future<dynamic> setOffline(bool offline) => _globalChannel.invokeMethod(
     );
 
 Future<void> setHttpHeaders(Map<String, String> headers) {
-  print("Khara.cooooooooooooooolKhra");
   return _globalChannel.invokeMethod(
     'setHttpHeaders',
     <String, dynamic>{

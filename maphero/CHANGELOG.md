@@ -1,5 +1,5 @@
-## 0.0.20
-  Migrate to MapHero
+## 0.0.23
+  Migrate to MapHero SDK
 
 ## 0.0.19
   Migrate to MapHero
