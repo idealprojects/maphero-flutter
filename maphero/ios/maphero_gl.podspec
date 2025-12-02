@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name             = 'maphero_gl'
   s.static_framework = true
-  s.version          = '0.0.25'
+  s.version          = '1.0.3'
   s.summary          = 'MapHero Flutter plugin'
   s.description      = <<-DESC
 MapHero Flutter plugin.
