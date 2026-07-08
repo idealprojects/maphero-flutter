@@ -1,1 +1,0 @@
-#define MH_RENDER_BACKEND_METAL 1

@@ -16,11 +16,11 @@ typedef NS_ENUM(NSUInteger, MHFillTranslationAnchor) {
     /**
      The fill is translated relative to the map.
      */
-    MHFillTranslationAnchorMap,
+     MHFillTranslationAnchorMap,
     /**
      The fill is translated relative to the viewport.
      */
-    MHFillTranslationAnchorViewport,
+     MHFillTranslationAnchorViewport,
 };
 
 /**
@@ -98,7 +98,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#paint-fill-antialias"><code>fill-antialias</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  
@@ -272,7 +272,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#paint-fill-translate"><code>fill-translate</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  
@@ -298,7 +298,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#paint-fill-translate"><code>fill-translate</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  
@@ -334,7 +334,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#paint-fill-translate-anchor"><code>fill-translate-anchor</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  

@@ -16,39 +16,39 @@ typedef NS_ENUM(NSUInteger, MHIconAnchor) {
     /**
      The center of the icon is placed closest to the anchor.
      */
-    MHIconAnchorCenter,
+     MHIconAnchorCenter,
     /**
      The left side of the icon is placed closest to the anchor.
      */
-    MHIconAnchorLeft,
+     MHIconAnchorLeft,
     /**
      The right side of the icon is placed closest to the anchor.
      */
-    MHIconAnchorRight,
+     MHIconAnchorRight,
     /**
      The top of the icon is placed closest to the anchor.
      */
-    MHIconAnchorTop,
+     MHIconAnchorTop,
     /**
      The bottom of the icon is placed closest to the anchor.
      */
-    MHIconAnchorBottom,
+     MHIconAnchorBottom,
     /**
      The top left corner of the icon is placed closest to the anchor.
      */
-    MHIconAnchorTopLeft,
+     MHIconAnchorTopLeft,
     /**
      The top right corner of the icon is placed closest to the anchor.
      */
-    MHIconAnchorTopRight,
+     MHIconAnchorTopRight,
     /**
      The bottom left corner of the icon is placed closest to the anchor.
      */
-    MHIconAnchorBottomLeft,
+     MHIconAnchorBottomLeft,
     /**
      The bottom right corner of the icon is placed closest to the anchor.
      */
-    MHIconAnchorBottomRight,
+     MHIconAnchorBottomRight,
 };
 
 /**
@@ -61,16 +61,16 @@ typedef NS_ENUM(NSUInteger, MHIconPitchAlignment) {
     /**
      The icon is aligned to the plane of the map.
      */
-    MHIconPitchAlignmentMap,
+     MHIconPitchAlignmentMap,
     /**
      The icon is aligned to the plane of the viewport.
      */
-    MHIconPitchAlignmentViewport,
+     MHIconPitchAlignmentViewport,
     /**
      Automatically matches the value of
      ``MHSymbolStyleLayer/iconRotationAlignment``.
      */
-    MHIconPitchAlignmentAuto,
+     MHIconPitchAlignmentAuto,
 };
 
 /**
@@ -86,19 +86,19 @@ typedef NS_ENUM(NSUInteger, MHIconRotationAlignment) {
      east-west. When `symbolPlacement` is set to `MHSymbolPlacementLine` or
      `MHSymbolPlacementLineCenter`, aligns icon x-axes with the line.
      */
-    MHIconRotationAlignmentMap,
+     MHIconRotationAlignmentMap,
     /**
      Produces icons whose x-axes are aligned with the x-axis of the viewport,
      regardless of the value of ``MHSymbolStyleLayer/symbolPlacement``.
      */
-    MHIconRotationAlignmentViewport,
+     MHIconRotationAlignmentViewport,
     /**
      When `symbolPlacement` is set to `MHSymbolPlacementPoint`, this is
      equivalent to `MHIconRotationAlignmentViewport`. When `symbolPlacement` is
      set to `MHSymbolPlacementLine` or `MHSymbolPlacementLineCenter`, this is
      equivalent to `MHIconRotationAlignmentMap`.
      */
-    MHIconRotationAlignmentAuto,
+     MHIconRotationAlignmentAuto,
 };
 
 /**
@@ -113,19 +113,19 @@ typedef NS_ENUM(NSUInteger, MHIconTextFit) {
     /**
      The icon is displayed at its intrinsic aspect ratio.
      */
-    MHIconTextFitNone,
+     MHIconTextFitNone,
     /**
      The icon is scaled in the x-dimension to fit the width of the text.
      */
-    MHIconTextFitWidth,
+     MHIconTextFitWidth,
     /**
      The icon is scaled in the y-dimension to fit the height of the text.
      */
-    MHIconTextFitHeight,
+     MHIconTextFitHeight,
     /**
      The icon is scaled in both x- and y-dimensions.
      */
-    MHIconTextFitBoth,
+     MHIconTextFitBoth,
 };
 
 /**
@@ -138,18 +138,18 @@ typedef NS_ENUM(NSUInteger, MHSymbolPlacement) {
     /**
      The label is placed at the point where the geometry is located.
      */
-    MHSymbolPlacementPoint,
+     MHSymbolPlacementPoint,
     /**
      The label is placed along the line of the geometry. Can only be used on
      `LineString` and `Polygon` geometries.
      */
-    MHSymbolPlacementLine,
+     MHSymbolPlacementLine,
     /**
      The label is placed at the center of the line of the geometry. Can only be
      used on `LineString` and `Polygon` geometries. Note that a single feature
      in a vector tile may contain multiple line geometries.
      */
-    MHSymbolPlacementLineCenter,
+     MHSymbolPlacementLineCenter,
 };
 
 /**
@@ -169,18 +169,18 @@ typedef NS_ENUM(NSUInteger, MHSymbolZOrder) {
      `MHTextAllowOverlapIconIgnorePlacement` or `textIgnorePlacement` is
      `false`.
      */
-    MHSymbolZOrderAuto,
+     MHSymbolZOrderAuto,
     /**
      Specify this z order if symbols’ appearance relies on lower features
      overlapping higher features. For example, symbols with a pin-like
      appearance would require this z order.
      */
-    MHSymbolZOrderViewportY,
+     MHSymbolZOrderViewportY,
     /**
      Specify this z order if the order in which features appear in the source is
      significant.
      */
-    MHSymbolZOrderSource,
+     MHSymbolZOrderSource,
 };
 
 /**
@@ -193,39 +193,39 @@ typedef NS_ENUM(NSUInteger, MHTextAnchor) {
     /**
      The center of the text is placed closest to the anchor.
      */
-    MHTextAnchorCenter,
+     MHTextAnchorCenter,
     /**
      The left side of the text is placed closest to the anchor.
      */
-    MHTextAnchorLeft,
+     MHTextAnchorLeft,
     /**
      The right side of the text is placed closest to the anchor.
      */
-    MHTextAnchorRight,
+     MHTextAnchorRight,
     /**
      The top of the text is placed closest to the anchor.
      */
-    MHTextAnchorTop,
+     MHTextAnchorTop,
     /**
      The bottom of the text is placed closest to the anchor.
      */
-    MHTextAnchorBottom,
+     MHTextAnchorBottom,
     /**
      The top left corner of the text is placed closest to the anchor.
      */
-    MHTextAnchorTopLeft,
+     MHTextAnchorTopLeft,
     /**
      The top right corner of the text is placed closest to the anchor.
      */
-    MHTextAnchorTopRight,
+     MHTextAnchorTopRight,
     /**
      The bottom left corner of the text is placed closest to the anchor.
      */
-    MHTextAnchorBottomLeft,
+     MHTextAnchorBottomLeft,
     /**
      The bottom right corner of the text is placed closest to the anchor.
      */
-    MHTextAnchorBottomRight,
+     MHTextAnchorBottomRight,
 };
 
 /**
@@ -238,19 +238,19 @@ typedef NS_ENUM(NSUInteger, MHTextJustification) {
     /**
      The text is aligned towards the anchor position.
      */
-    MHTextJustificationAuto,
+     MHTextJustificationAuto,
     /**
      The text is aligned to the left.
      */
-    MHTextJustificationLeft,
+     MHTextJustificationLeft,
     /**
      The text is centered.
      */
-    MHTextJustificationCenter,
+     MHTextJustificationCenter,
     /**
      The text is aligned to the right.
      */
-    MHTextJustificationRight,
+     MHTextJustificationRight,
 };
 
 /**
@@ -263,16 +263,16 @@ typedef NS_ENUM(NSUInteger, MHTextPitchAlignment) {
     /**
      The text is aligned to the plane of the map.
      */
-    MHTextPitchAlignmentMap,
+     MHTextPitchAlignmentMap,
     /**
      The text is aligned to the plane of the viewport.
      */
-    MHTextPitchAlignmentViewport,
+     MHTextPitchAlignmentViewport,
     /**
      Automatically matches the value of
      ``MHSymbolStyleLayer/textRotationAlignment``.
      */
-    MHTextPitchAlignmentAuto,
+     MHTextPitchAlignmentAuto,
 };
 
 /**
@@ -288,19 +288,19 @@ typedef NS_ENUM(NSUInteger, MHTextRotationAlignment) {
      east-west. When `symbolPlacement` is set to `MHSymbolPlacementLine` or
      `MHSymbolPlacementLineCenter`, aligns text x-axes with the line.
      */
-    MHTextRotationAlignmentMap,
+     MHTextRotationAlignmentMap,
     /**
      Produces glyphs whose x-axes are aligned with the x-axis of the viewport,
      regardless of the value of ``MHSymbolStyleLayer/symbolPlacement``.
      */
-    MHTextRotationAlignmentViewport,
+     MHTextRotationAlignmentViewport,
     /**
      When `symbolPlacement` is set to `MHSymbolPlacementPoint`, this is
      equivalent to `MHTextRotationAlignmentViewport`. When `symbolPlacement` is
      set to `MHSymbolPlacementLine` or `MHSymbolPlacementLineCenter`, this is
      equivalent to `MHTextRotationAlignmentMap`.
      */
-    MHTextRotationAlignmentAuto,
+     MHTextRotationAlignmentAuto,
 };
 
 /**
@@ -313,15 +313,15 @@ typedef NS_ENUM(NSUInteger, MHTextTransform) {
     /**
      The text is not altered.
      */
-    MHTextTransformNone,
+     MHTextTransformNone,
     /**
      Forces all letters to be displayed in uppercase.
      */
-    MHTextTransformUppercase,
+     MHTextTransformUppercase,
     /**
      Forces all letters to be displayed in lowercase.
      */
-    MHTextTransformLowercase,
+     MHTextTransformLowercase,
 };
 
 /**
@@ -340,12 +340,12 @@ typedef NS_ENUM(NSUInteger, MHTextWritingMode) {
      If a text's language supports horizontal writing mode, symbols with point
      placement would be laid out horizontally.
      */
-    MHTextWritingModeHorizontal,
+     MHTextWritingModeHorizontal,
     /**
      If a text's language supports vertical writing mode, symbols with point
      placement would be laid out vertically.
      */
-    MHTextWritingModeVertical,
+     MHTextWritingModeVertical,
 };
 
 /**
@@ -358,11 +358,11 @@ typedef NS_ENUM(NSUInteger, MHIconTranslationAnchor) {
     /**
      Icons are translated relative to the map.
      */
-    MHIconTranslationAnchorMap,
+     MHIconTranslationAnchorMap,
     /**
      Icons are translated relative to the viewport.
      */
-    MHIconTranslationAnchorViewport,
+     MHIconTranslationAnchorViewport,
 };
 
 /**
@@ -375,11 +375,11 @@ typedef NS_ENUM(NSUInteger, MHTextTranslationAnchor) {
     /**
      The text is translated relative to the map.
      */
-    MHTextTranslationAnchorMap,
+     MHTextTranslationAnchorMap,
     /**
      The text is translated relative to the viewport.
      */
-    MHTextTranslationAnchorViewport,
+     MHTextTranslationAnchorViewport,
 };
 
 /**
@@ -442,7 +442,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#layout-symbol-icon-allow-overlap"><code>icon-allow-overlap</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  
@@ -506,7 +506,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#layout-symbol-icon-ignore-placement"><code>icon-ignore-placement</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  
@@ -538,7 +538,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#layout-symbol-icon-image"><code>icon-image</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  
@@ -628,55 +628,30 @@ MH_EXPORT
  */
 @property (nonatomic, null_resettable, getter=isIconOptional) NSExpression *iconOptional;
 
-#if TARGET_OS_IPHONE
 /**
  Size of additional area round the icon bounding box used for detecting symbol
  collisions.
  
  This property is measured in points.
  
- The default value of this property is an expression that evaluates to an
- `NSValue` object containing a `UIEdgeInsets` struct set to 2 points on all
- sides. Set this property to `nil` to reset it to the default value.
+ The default value of this property is an expression that evaluates to the float
+ `2`. Set this property to `nil` to reset it to the default value.
  
  This property is only applied to the style if `iconImageName` is non-`nil`.
  Otherwise, it is ignored.
  
  You can set this property to an expression containing any of the following:
  
- * Constant `UIEdgeInsets` values
+ * Constant numeric values
  * Predefined functions, including mathematical and string operators
  * Conditional expressions
  * Variable assignments and references to assigned variables
- * Interpolation and step functions applied to the `$zoomLevel` variable and/or
- feature attributes
+ * Interpolation and step functions applied to the `$zoomLevel` variable
+ 
+ This property does not support applying interpolation or step functions to
+ feature attributes.
  */
 @property (nonatomic, null_resettable) NSExpression *iconPadding;
-#else
-/**
- Size of additional area round the icon bounding box used for detecting symbol
- collisions.
- 
- This property is measured in points.
- 
- The default value of this property is an expression that evaluates to an
- `NSValue` object containing a `NSEdgeInsets` struct set to 2 points on all
- sides. Set this property to `nil` to reset it to the default value.
- 
- This property is only applied to the style if `iconImageName` is non-`nil`.
- Otherwise, it is ignored.
- 
- You can set this property to an expression containing any of the following:
- 
- * Constant `NSEdgeInsets` values
- * Predefined functions, including mathematical and string operators
- * Conditional expressions
- * Variable assignments and references to assigned variables
- * Interpolation and step functions applied to the `$zoomLevel` variable and/or
- feature attributes
- */
-@property (nonatomic, null_resettable) NSExpression *iconPadding;
-#endif
 
 /**
  Orientation of icon when map is pitched.
@@ -718,7 +693,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#layout-symbol-icon-rotate"><code>icon-rotate</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  
@@ -782,7 +757,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#layout-symbol-icon-size"><code>icon-size</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  
@@ -900,7 +875,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#layout-symbol-icon-keep-upright"><code>icon-keep-upright</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  
@@ -934,7 +909,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#layout-symbol-text-keep-upright"><code>text-keep-upright</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  
@@ -968,7 +943,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#layout-symbol-text-max-angle"><code>text-max-angle</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  
@@ -999,7 +974,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#layout-symbol-text-max-width"><code>text-max-width</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  
@@ -1032,7 +1007,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#layout-symbol-symbol-avoid-edges"><code>symbol-avoid-edges</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  
@@ -1077,26 +1052,6 @@ MH_EXPORT
  attributes.
  */
 @property (nonatomic, null_resettable) NSExpression *symbolPlacement;
-
-/**
- Internal use only
- 
- The default value of this property is an expression that evaluates to `NO`. Set
- this property to `nil` to reset it to the default value.
- 
- You can set this property to an expression containing any of the following:
- 
- * Constant Boolean values
- * Predefined functions, including mathematical and string operators
- * Conditional expressions
- * Variable assignments and references to assigned variables
- * Step functions applied to the `$zoomLevel` variable
- 
- This property does not support applying interpolation functions to the
- `$zoomLevel` variable or applying interpolation or step functions to feature
- attributes.
- */
-@property (nonatomic, null_resettable) NSExpression *symbolScreenSpace;
 
 /**
  Sorts features in ascending order based on this value. Features with lower sort
@@ -1187,7 +1142,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#layout-symbol-text-field"><code>text-field</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  
@@ -1223,7 +1178,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#layout-symbol-text-allow-overlap"><code>text-allow-overlap</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  
@@ -1295,7 +1250,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#layout-symbol-text-font"><code>text-font</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  
@@ -1324,7 +1279,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#layout-symbol-text-size"><code>text-size</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  
@@ -1351,7 +1306,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#layout-symbol-text-ignore-placement"><code>text-ignore-placement</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  
@@ -1381,7 +1336,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#layout-symbol-text-justify"><code>text-justify</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  
@@ -1609,7 +1564,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#layout-symbol-text-rotate"><code>text-rotate</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  
@@ -1722,94 +1677,6 @@ MH_EXPORT
  */
 @property (nonatomic, null_resettable) NSExpression *textVariableAnchor;
 
-#if TARGET_OS_IPHONE
-/**
- To increase the chance of placing high-priority labels on the map, you can
- provide an array of `textAnchor` locations, each paired with an offset value.
- The renderer will attempt to place the label at each location, in order, before
- moving on to the next location+offset. Use `textJustify: auto` to choose
- justification based on anchor position. 
- 
-  The length of the array must be even, and must alternate between enum and
- point entries. i.e., each anchor location must be accompanied by a point, and
- that point defines the offset when the corresponding anchor location is used.
- Positive offset values indicate right and down, while negative values indicate
- left and up. Anchor locations may repeat, allowing the renderer to try multiple
- offsets to try and place a label using the same anchor. 
- 
-  When present, this property takes precedence over `textAnchor`,
- `textVariableAnchor`, `textOffset`, and `textRadialOffset`. 
- 
-  ```json 
-  { "text-variable-anchor-offset": ["top", [0, 4], "left", [3,0], "bottom", [1,
- 1]] } 
-  ``` 
- 
-  When the renderer chooses the `top` anchor, `[0, 4]` will be used for
- `textOffset`; the text will be shifted down by 4 ems. 
- 
-  When the renderer chooses the `left` anchor, `[3, 0]` will be used for
- `textOffset`; the text will be shifted right by 3 ems.
- 
- This property is only applied to the style if `text` is non-`nil`, and
- `symbolPlacement` is set to an expression that evaluates to or
- `MHSymbolPlacementPoint`. Otherwise, it is ignored.
- 
- You can set this property to an expression containing any of the following:
- 
- * Constant interleaved `MHTextAnchor` and `CGVector` array values
- * Predefined functions, including mathematical and string operators
- * Conditional expressions
- * Variable assignments and references to assigned variables
- * Interpolation and step functions applied to the `$zoomLevel` variable and/or
- feature attributes
- */
-@property (nonatomic, null_resettable) NSExpression *textVariableAnchorOffset;
-#else
-/**
- To increase the chance of placing high-priority labels on the map, you can
- provide an array of `textAnchor` locations, each paired with an offset value.
- The renderer will attempt to place the label at each location, in order, before
- moving on to the next location+offset. Use `textJustify: auto` to choose
- justification based on anchor position. 
- 
-  The length of the array must be even, and must alternate between enum and
- point entries. i.e., each anchor location must be accompanied by a point, and
- that point defines the offset when the corresponding anchor location is used.
- Positive offset values indicate right and down, while negative values indicate
- left and up. Anchor locations may repeat, allowing the renderer to try multiple
- offsets to try and place a label using the same anchor. 
- 
-  When present, this property takes precedence over `textAnchor`,
- `textVariableAnchor`, `textOffset`, and `textRadialOffset`. 
- 
-  ```json 
-  { "text-variable-anchor-offset": ["top", [0, 4], "left", [3,0], "bottom", [1,
- 1]] } 
-  ``` 
- 
-  When the renderer chooses the `top` anchor, `[0, 4]` will be used for
- `textOffset`; the text will be shifted down by 4 ems. 
- 
-  When the renderer chooses the `left` anchor, `[3, 0]` will be used for
- `textOffset`; the text will be shifted right by 3 ems.
- 
- This property is only applied to the style if `text` is non-`nil`, and
- `symbolPlacement` is set to an expression that evaluates to or
- `MHSymbolPlacementPoint`. Otherwise, it is ignored.
- 
- You can set this property to an expression containing any of the following:
- 
- * Constant interleaved `MHTextAnchor` and `CGVector` array values
- * Predefined functions, including mathematical and string operators
- * Conditional expressions
- * Variable assignments and references to assigned variables
- * Interpolation and step functions applied to the `$zoomLevel` variable and/or
- feature attributes
- */
-@property (nonatomic, null_resettable) NSExpression *textVariableAnchorOffset;
-#endif
-
 /**
  The property allows control over a symbol's orientation. Note that the property
  values act as a hint, so that a symbol whose language doesn’t support the
@@ -1824,7 +1691,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#layout-symbol-text-writing-mode"><code>text-writing-mode</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  
@@ -2060,7 +1927,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#paint-icon-translate"><code>icon-translate</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  
@@ -2089,7 +1956,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#paint-icon-translate"><code>icon-translate</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  
@@ -2125,7 +1992,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#paint-icon-translate-anchor"><code>icon-translate-anchor</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  
@@ -2349,7 +2216,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#paint-text-translate"><code>text-translate</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  
@@ -2378,7 +2245,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#paint-text-translate"><code>text-translate</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  
@@ -2414,7 +2281,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#paint-text-translate-anchor"><code>text-translate-anchor</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  

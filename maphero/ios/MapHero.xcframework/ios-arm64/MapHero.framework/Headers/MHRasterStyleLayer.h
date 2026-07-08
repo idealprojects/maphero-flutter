@@ -19,12 +19,12 @@ typedef NS_ENUM(NSUInteger, MHRasterResamplingMode) {
      of the four closest original source points creating a smooth but blurry
      look when overscaled
      */
-    MHRasterResamplingModeLinear,
+     MHRasterResamplingModeLinear,
     /**
      Nearest neighbor filtering interpolates point values using the nearest
      original source point creating a sharp but pointated look when overscaled
      */
-    MHRasterResamplingModeNearest,
+     MHRasterResamplingModeNearest,
 };
 
 /**
@@ -92,7 +92,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#paint-raster-brightness-max"><code>raster-brightness-max</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  
@@ -125,7 +125,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#paint-raster-brightness-min"><code>raster-brightness-min</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  
@@ -207,7 +207,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#paint-raster-hue-rotate"><code>raster-hue-rotate</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  
@@ -266,7 +266,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#paint-raster-resampling"><code>raster-resampling</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  

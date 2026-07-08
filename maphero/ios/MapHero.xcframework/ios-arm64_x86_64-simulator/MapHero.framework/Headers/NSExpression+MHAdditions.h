@@ -19,7 +19,7 @@ typedef NSString *MHExpressionInterpolationMode NS_TYPED_ENUM;
  This attribute corresponds to the `linear` value in the
  <a
  href="https://maplibre.org/maplibre-style-spec/expressions/#interpolate"><code>interpolate</code></a>
- expression operator in the MapHero Style Spec.
+ expression operator in the MapLibre Style Spec.
  */
 FOUNDATION_EXTERN MH_EXPORT const MHExpressionInterpolationMode
     MHExpressionInterpolationModeLinear;
@@ -30,7 +30,7 @@ FOUNDATION_EXTERN MH_EXPORT const MHExpressionInterpolationMode
  This attribute corresponds to the `exponential` value in the
  <a
  href="https://maplibre.org/maplibre-style-spec/expressions/#interpolate"><code>interpolate</code></a>
- expression operator in the MapHero Style Spec.
+ expression operator in the MapLibre Style Spec.
  */
 FOUNDATION_EXTERN MH_EXPORT const MHExpressionInterpolationMode
     MHExpressionInterpolationModeExponential;
@@ -41,7 +41,7 @@ FOUNDATION_EXTERN MH_EXPORT const MHExpressionInterpolationMode
  This attribute corresponds to the `cubic-bezier` value in the
  <a
  href="https://maplibre.org/maplibre-style-spec/expressions/#interpolate"><code>interpolate</code></a>
- expression operator in the MapHero Style Spec.
+ expression operator in the MapLibre Style Spec.
  */
 FOUNDATION_EXTERN MH_EXPORT const MHExpressionInterpolationMode
     MHExpressionInterpolationModeCubicBezier;
@@ -49,7 +49,7 @@ FOUNDATION_EXTERN MH_EXPORT const MHExpressionInterpolationMode
 /**
  Methods for creating expressions that use Mapbox-specific functionality and for
  converting to and from the JSON format defined in the
- <a href="https://maplibre.org/maplibre-style-spec/expressions/">MapHero Style Spec</a>.
+ <a href="https://maplibre.org/maplibre-style-spec/expressions/">MapLibre Style Spec</a>.
  */
 @interface NSExpression (MHAdditions)
 
@@ -58,7 +58,7 @@ FOUNDATION_EXTERN MH_EXPORT const MHExpressionInterpolationMode
 /**
  `NSExpression` variable that corresponds to the
  <a href="https://maplibre.org/maplibre-style-spec/expressions/#zoom"><code>zoom</code></a>
- expression operator in the MapHero Style Spec.
+ expression operator in the MapLibre Style Spec.
  */
 @property (class, nonatomic, readonly) NSExpression *zoomLevelVariableExpression;
 
@@ -66,7 +66,7 @@ FOUNDATION_EXTERN MH_EXPORT const MHExpressionInterpolationMode
  `NSExpression` variable that corresponds to the
  <a
  href="https://maplibre.org/maplibre-style-spec/expressions/#heatmap-density"><code>heatmap-density</code></a>
- expression operator in the MapHero Style Spec.
+ expression operator in the MapLibre Style Spec.
  */
 @property (class, nonatomic, readonly) NSExpression *heatmapDensityVariableExpression;
 
@@ -74,7 +74,7 @@ FOUNDATION_EXTERN MH_EXPORT const MHExpressionInterpolationMode
  `NSExpression` variable that corresponds to the
  <a
  href="https://maplibre.org/maplibre-style-spec/expressions/#line-progress"><code>line-progress</code></a>
- expression operator in the MapHero Style Spec.
+ expression operator in the MapLibre Style Spec.
  */
 @property (class, nonatomic, readonly) NSExpression *lineProgressVariableExpression;
 
@@ -82,21 +82,21 @@ FOUNDATION_EXTERN MH_EXPORT const MHExpressionInterpolationMode
  `NSExpression` variable that corresponds to the
  <a
  href="https://maplibre.org/maplibre-style-spec/expressions/#geometry-type"><code>geometry-type</code></a>
- expression operator in the MapHero Style Spec.
+ expression operator in the MapLibre Style Spec.
  */
 @property (class, nonatomic, readonly) NSExpression *geometryTypeVariableExpression;
 
 /**
  `NSExpression` variable that corresponds to the
  <a href="https://maplibre.org/maplibre-style-spec/expressions/#id"><code>id</code></a>
- expression operator in the MapHero Style Spec.
+ expression operator in the MapLibre Style Spec.
  */
 @property (class, nonatomic, readonly) NSExpression *featureIdentifierVariableExpression;
 
 /**
  `NSExpression` variable that corresponds to the
  <a href="https://docs.mapbox.com/mapbox-gl-js/style-spec/#accumulated"><code>id</code></a>
- expression operator in the MapHero Style Spec.
+ expression operator in the MapLibre Style Spec.
  */
 @property (class, nonatomic, readonly) NSExpression *featureAccumulatedVariableExpression;
 
@@ -104,7 +104,7 @@ FOUNDATION_EXTERN MH_EXPORT const MHExpressionInterpolationMode
  `NSExpression` variable that corresponds to the
  <a
  href="https://maplibre.org/maplibre-style-spec/expressions/#properties"><code>properties</code></a>
- expression operator in the MapHero Style Spec.
+ expression operator in the MapLibre Style Spec.
  */
 @property (class, nonatomic, readonly) NSExpression *featureAttributesVariableExpression;
 
@@ -214,7 +214,7 @@ FOUNDATION_EXTERN MH_EXPORT const MHExpressionInterpolationMode
  from JSON data.
 
  The Foundation object is interpreted according to the
- [MapHero Style Spec](https://maplibre.org/maplibre-style-spec/expressions/).
+ [MapLibre Style Spec](https://maplibre.org/maplibre-style-spec/expressions/).
  See the
  “[Information for Style Authors](../for-style-authors.html#setting-attribute-values)”
  guide for a correspondence of operators and types between the style
@@ -231,7 +231,7 @@ FOUNDATION_EXTERN MH_EXPORT const MHExpressionInterpolationMode
  An equivalent Foundation object that can be serialized as JSON.
 
  The Foundation object conforms to the
- [MapHero Style Spec](https://maplibre.org/maplibre-style-spec/expressions/).
+ [MapLibre Style Spec](https://maplibre.org/maplibre-style-spec/expressions/).
  See the
  “[Information for Style Authors](../for-style-authors.html#setting-attribute-values)”
  guide for a correspondence of operators and types between the style

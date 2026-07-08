@@ -10,29 +10,10 @@
  The default value for this option is ``MHDEMEncoding/MHDEMEncodingMapbox``.
 
  This option cannot be represented in a TileJSON or style JSON file. It is used
- with the ``MHRasterDEMSource`` class and is ignored when creating a
+ with the ``MHRasterDEMSource`` class and is ignored when creating an
  ``MHRasterTileSource`` or ``MHRasterTileSource`` object.
  */
 FOUNDATION_EXTERN MH_EXPORT const MHTileSourceOption MHTileSourceOptionDEMEncoding;
-
-/**
- The encoding formula used to generate the raster tileset
-*/
-
-typedef NS_ENUM(NSUInteger, MHDEMEncoding) {
-
-  /**
-     Raster tiles generated with the [Mapbox encoding
-     formula](https://docs.mapbox.com/help/troubleshooting/access-elevation-data/#mapbox-terrain-rgb)
-  */
-  MHDEMEncodingMapbox = 0,
-
-  /**
-   Raster tiles generated with the [Mapzen Terrarium encoding
-   formula](https://aws.amazon.com/public-datasets/terrain/).
-  */
-  MHDEMEncodingTerrarium = 1,
-};
 
 /**
  ``MHRasterDEMSource`` is a map content source that supplies rasterized

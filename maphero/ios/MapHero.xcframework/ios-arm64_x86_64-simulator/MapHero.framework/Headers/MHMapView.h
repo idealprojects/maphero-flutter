@@ -5,7 +5,6 @@
 #import "MHFoundation.h"
 #import "MHGeometry.h"
 #import "MHMapCamera.h"
-#import "MHMapOptions.h"
 #import "MHStyle.h"
 #import "MHTypes.h"
 
@@ -19,7 +18,6 @@ NS_ASSUME_NONNULL_BEGIN
 @class MHPolygon;
 @class MHScaleBar;
 @class MHShape;
-@class MHPluginLayer;
 
 @protocol MHMapViewDelegate;
 @protocol MHAnnotation;
@@ -151,7 +149,7 @@ FOUNDATION_EXTERN MH_EXPORT MHExceptionName const MHUserLocationAnnotationTypeEx
  The map view loads scalable vector tiles that conform to the
  <a href="https://github.com/mapbox/vector-tile-spec">Mapbox Vector Tile Specification</a>.
  It styles them with a style that conforms to the
- <a href="https://maplibre.org/maplibre-style-spec/">MapHero Style Spec</a>.
+ <a href="https://maplibre.org/maplibre-style-spec/">MapLibre Style Spec</a>.
  Such styles can be designed with
  <a href="https://maplibre.org/maputnik/">Maputnik</a>.
 
@@ -209,28 +207,6 @@ MH_EXPORT
  */
 - (instancetype)initWithFrame:(CGRect)frame styleURL:(nullable NSURL *)styleURL;
 
-/**
- * Initializes and returns a newly allocated map view with the specified frame
- * and style JSON.
- *
- * @param frame The frame for the view, measured in points.
- * @param styleJSON JSON string of the map style to display. The JSON must conform to the
- *        <a href="https://maplibre.org/maplibre-style-spec/">MapHero Style Specification</a>.
- *        Specify `nil` for the default style.
- * @return An initialized map view.
- */
-- (instancetype)initWithFrame:(CGRect)frame styleJSON:(NSString *)styleJSON;
-
-/**
- Initializes and returns a newly allocated map view with the specified frame
- and the default style.
-
- @param frame The frame for the view, measured in points.
- @param options The map instance options
- @return An initialized map view.
- */
-- (instancetype)initWithFrame:(CGRect)frame options:(MHMapOptions *)options;
-
 // MARK: Accessing the Delegate
 
 /**
@@ -276,20 +252,6 @@ MH_EXPORT
  - TODO: change the style of a map at runtime.
  */
 @property (nonatomic, null_resettable) NSURL *styleURL;
-
-/**
- * The style JSON representation of the map.
- *
- * Setting this property results in an asynchronous style change. If you wish to know when the style
- * change is complete, observe the ``MHMapViewDelegate/mapView:didFinishLoadingStyle:`` method
- * on ``MHMapViewDelegate``.
- *
- * The JSON must conform to the
- * <a href="https://maplibre.org/maplibre-style-spec/">MapHero Style Specification</a>.
- *
- * @throws NSInvalidArgumentException if styleJSON is nil or invalid JSON
- */
-@property (nonatomic, copy) NSString *styleJSON;
 
 /**
  Reloads the style.
@@ -358,14 +320,6 @@ MH_EXPORT
 @property (nonatomic, assign) CGPoint scaleBarMargins;
 
 /**
- A Boolean value indicating whether the map may display Compass View.
-
- The view controlled by this property is available at `compassView`. The default value
- of this property is `YES`.
- */
-@property (nonatomic, assign) BOOL showsCompassView;
-
-/**
  A control indicating the map’s direction and allowing the user to manipulate
  the direction, positioned in the upper-right corner.
  */
@@ -383,15 +337,7 @@ MH_EXPORT
 @property (nonatomic, assign) CGPoint compassViewMargins;
 
 /**
- A Boolean value indicating whether the map may display MapHero logo.
-
- The view controlled by this property is available at `logoView`. The default value
- of this property is `YES`.
- */
-@property (nonatomic, assign) BOOL showsLogoView;
-
-/**
- A logo, the MapHero logo by default, positioned in the lower-left corner.
+ A logo, the MapLibre logo by default, positioned in the lower-left corner.
  You are not required to display this, but some vector-sources may require attribution.
  */
 @property (nonatomic, readonly) UIImageView *logoView;
@@ -406,14 +352,6 @@ MH_EXPORT
  A `CGPoint` indicating the position offset of the logo.
  */
 @property (nonatomic, assign) CGPoint logoViewMargins;
-
-/**
- A Boolean value indicating whether the map may display Attribution Button.
-
- The view controlled by this property is available at `attributionButton`. The default value
- of this property is `YES`.
- */
-@property (nonatomic, assign) BOOL showsAttributionButton;
 
 /**
  A view showing legally required copyright notices,
@@ -488,66 +426,7 @@ MH_EXPORT
 
 @property (nonatomic, assign) BOOL tileCacheEnabled;
 
-// MARK: Tile LOD controls
-
-/**
- Camera based tile level of detail controls
-
- Minimum radius around the view point in unit of tiles in which the fine
- grained zoom level tiles are always used when performing LOD
- radius must be greater than 1 (At least 1 fine detailed tile is present)
- A smaller radius value may improve performance at the cost of quality (tiles away from
- camera use lower Zoom levels)
- */
-@property (nonatomic, assign) double tileLodMinRadius;
-
-/**
- Camera based tile level of detail controls
-
- Factor for the distance to the camera view point
- A value larger than 1 increases the distance to the camera view point reducing LOD
- Larger values may improve performance at the cost of quality (tiles away from camera
- use lower Zoom levels)
- */
-@property (nonatomic, assign) double tileLodScale;
-
-/**
- Camera based tile level of detail controls
-
- Pitch angle in radians above which LOD calculation is performed
- A smaller radius value may improve performance at the cost of quality
- */
-@property (nonatomic, assign) double tileLodPitchThreshold;
-
-/**
- Camera based tile level of detail controls
-
- Shift applied to the Zoom level during LOD calculation
- A negative value shifts the Zoom level to a coarser level reducing quality but improving
- performance A positive value shifts the Zoom level to a finer level increasing details but
- negatively affecting performance A value of zero (default) does not apply any shift to the Zoom
- level It is not recommended to change the default value unless performance is critical and the loss
- of quality is acceptable. A value of -1 reduces the number of displayed tiles by a factor of 4 on
- average It is recommended to first configure the pixelRatio before adjusting TileLodZoomShift.
- */
-@property (nonatomic, assign) double tileLodZoomShift;
-
-/**
- Frustum offset used to disable rendering of elements at the edge of the screen
-
- Offset applied to camera frustum and scissor rectangle. The camrea frustum is modified
- to avoid loading geometry that's behind UI elements at the top of the screen. The scissor
- rectangle is used to avoid shading fragments that are behind UI elements at the edges of
- the screen. All values are in logical pixels.
- */
-@property (nonatomic, assign) UIEdgeInsets frustumOffset;
-
 // MARK: Displaying the User’s Location
-
-/**
- Disabled using a current location manager.
- */
-- (void)disableLocationManager;
 
 /**
  The object that this map view uses to start and stop the delivery of
@@ -588,15 +467,6 @@ MH_EXPORT
  calling `showsUserLocation`.
  */
 @property (nonatomic, assign) BOOL showsUserLocation;
-
-/**
- A boolean value indicating whether camera animation duration is set based
- on the time difference between the last location update and the current one
- or the default animation duration of 1 second.
-
- The default value of this property is `NO`
- */
-@property (nonatomic, assign) BOOL dynamicNavigationCameraAnimationDuration;
 
 /**
  A Boolean value indicating whether the map may request authorization to use location services.
@@ -678,8 +548,8 @@ MH_EXPORT
  `-setUserLocationVerticalAlignment:animated:` method instead.
  */
 @property (nonatomic, assign) MHAnnotationVerticalAlignment userLocationVerticalAlignment
-    __attribute__((
-        deprecated("Use ``MHMapViewDelegate/mapViewUserLocationAnchorPoint:`` instead.")));
+    __attribute__((deprecated("Use ``MHMapViewDelegate/mapViewUserLocationAnchorPoint:`` instead.")
+                       ));
 
 /**
  Sets the vertical alignment of the user location annotation within the
@@ -817,15 +687,6 @@ MH_EXPORT
 @property (nonatomic, getter=isZoomEnabled) BOOL zoomEnabled;
 
 /**
- A boolean value that reverses the direction of the quick zoom gesture.
-
- When this property is set, the zoom-in and zoom-out behavior during the quick
- zoom gesture (also called one-finger zoom) is reversed, aligning with the
- behavior in Apple Maps. The default value is `NO`.
- */
-@property (nonatomic, getter=isQuickZoomReversed) BOOL quickZoomReversed;
-
-/**
  A Boolean value that determines whether the user may scroll around the map,
  changing the center coordinate.
 
@@ -864,15 +725,6 @@ vertically on the map.
  programmatically.
  */
 @property (nonatomic, getter=isRotateEnabled) BOOL rotateEnabled;
-
-/**
-The threshold, measured in degrees, that determines when the map's bearing will snap to north.
-For example, with a toleranceForSnappingToNorth of 7, if the user rotates the map within 7 degrees
-of north, the map will automatically snap to exact north.
-
- The default value of this property is 7.
- */
-@property (nonatomic) CGFloat toleranceForSnappingToNorth;
 
 /**
  A Boolean value that determines whether the user may change the pitch (tilt) of
@@ -1062,11 +914,6 @@ of north, the map will automatically snap to exact north.
  * is 25.5.
  */
 @property (nonatomic) double maximumZoomLevel;
-
-/**
- * The maximum bounds of the map that can be shown on screen.
- */
-@property (nonatomic) MHCoordinateBounds maximumScreenBounds;
 
 /**
  The heading of the map, measured in degrees clockwise from true north.
@@ -1456,18 +1303,19 @@ of north, the map will automatically snap to exact north.
  the user find his or her bearings even after traversing a great distance.
 
  @param camera The new viewpoint.
- @param insets The minimum padding (in screen points) that would be visible
-    around the returned camera object if it were set as the receiver's camera.
  @param duration The amount of time, measured in seconds, that the transition
     animation should take. Specify `0` to jump to the new viewpoint
     instantaneously. Specify a negative value to use the default duration, which
     is based on the length of the flight path.
+ @param edgePadding The minimum padding (in screen points) that would be visible
+ around the returned camera object if it were set as the receiver’s camera.
  @param completion The block to execute after the animation finishes.
  */
 - (void)flyToCamera:(MHMapCamera *)camera
           edgePadding:(UIEdgeInsets)insets
          withDuration:(NSTimeInterval)duration
     completionHandler:(nullable void (^)(void))completion;
+
 /**
  Returns the camera that best fits the given coordinate bounds.
 
@@ -2008,7 +1856,7 @@ of north, the map will automatically snap to exact north.
 /**
  The complete list of overlays associated with the receiver. (read-only)
 
- The objects in this array must adopt the ``MHOverlay.h`` protocol. If no
+ The objects in this array must adopt the ``MHOverlay`` protocol. If no
  overlays are associated with the map view, the value of this property is
  empty array.
  */
@@ -2020,7 +1868,7 @@ of north, the map will automatically snap to exact north.
  To remove an overlay from a map, use the `-removeOverlay:` method.
 
  @param overlay The overlay object to add. This object must conform to the
-    ``MHOverlay.h`` protocol. */
+    ``MHOverlay`` protocol. */
 - (void)addOverlay:(id<MHOverlay>)overlay;
 
 /**
@@ -2029,7 +1877,7 @@ of north, the map will automatically snap to exact north.
  To remove multiple overlays from a map, use the `-removeOverlays:` method.
 
  @param overlays An array of objects, each of which must conform to the
-    ``MHOverlay.h`` protocol.
+    ``MHOverlay`` protocol.
  */
 - (void)addOverlays:(NSArray<id<MHOverlay>> *)overlays;
 
@@ -2048,7 +1896,7 @@ of north, the map will automatically snap to exact north.
 
  If a given overlay object is not associated with the map view, it is ignored.
 
- @param overlays An array of objects, each of which conforms to the ``MHOverlay.h``
+ @param overlays An array of objects, each of which conforms to the ``MHOverlay``
     protocol.
  */
 - (void)removeOverlays:(NSArray<id<MHOverlay>> *)overlays;
@@ -2266,62 +2114,7 @@ of north, the map will automatically snap to exact north.
  */
 @property (nonatomic) MHMapDebugMaskOptions debugMask;
 
-/**
- Returns the status of the rendering statistics overlay.
- */
-- (BOOL)isRenderingStatsViewEnabled;
-
-/**
- Enable a rendering statistics overlay with ``MHRenderingStats`` values.
- */
-- (void)enableRenderingStatsView:(BOOL)value;
-
-/**
- Get the list of action journal log files from oldest to newest.
-
- @return An array of log file paths.
-*/
-- (NSArray<NSString *> *)getActionJournalLogFiles;
-
-/**
- Get the action journal events from oldest to newest.
-
- Each element contains a serialized json object with the event data.
- Example
- `{
-    "name" : "onTileAction",
-    "time" : "2025-04-17T13:13:13.974Z",
-    "styleName" : "Streets",
-    "styleURL" : "maptiler://maps/streets",
-    "event" : {
-        "action" : "RequestedFromNetwork",
-        "tileX" : 0,
-        "tileY" : 0,
-        "tileZ" : 0,
-        "overscaledZ" : 0,
-        "sourceID" : "openmaptiles"
-    }
- }`
- */
-- (NSArray<NSString *> *)getActionJournalLog;
-
-/**
- Clear stored action journal events.
- */
-- (void)clearActionJournalLog;
-
-- (MHBackendResource *)backendResource;
-
-/**
- Triggers a repaint of the map.
-*/
-- (void)triggerRepaint;
-
-/**
- Adds a plug-in layer that is external to this library
- */
-- (void)addPluginLayerType:(Class)pluginLayerClass;
-
+- (MHBackendResource)backendResource;
 @end
 
 NS_ASSUME_NONNULL_END

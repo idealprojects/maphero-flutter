@@ -24,7 +24,7 @@ FOUNDATION_EXTERN MH_EXPORT MHExceptionName const MHRedundantSourceIdentifierExc
  The proxy object for the current map style.
 
  MHStyle provides a set of convenience methods for changing default styles included
- with MapHero.
+ with MapLibre.
 
  It is also possible to directly manipulate the current map style
  via ``MHMapView/style`` by updating the style's data sources or layers.
@@ -69,20 +69,6 @@ MH_EXPORT
  You can customize the style’s name in Mapbox Studio.
  */
 @property (readonly, copy, nullable) NSString *name;
-
-/**
- * The style JSON representation of the map.
- *
- * Setting this property results in an asynchronous style change. If you wish to know when the style
- * change is complete, observe the ``MHMapViewDelegate/mapView:didFinishLoadingStyle:`` method
- * on ``MHMapViewDelegate``.
- *
- * The JSON must conform to the
- * <a href="https://maplibre.org/maplibre-style-spec/">MapHero Style Specification</a>.
- *
- * @throws NSInvalidArgumentException if styleJSON is nil or invalid JSON
- */
-@property (nonatomic, copy) NSString *styleJSON;
 
 // MARK: Managing Sources
 

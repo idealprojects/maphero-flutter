@@ -2,28 +2,16 @@
 
 #import <MetalKit/MetalKit.h>
 
-@interface MHBackendResource : NSObject
-
-@property (nonatomic, strong) MTKView *mtkView;
-@property (nonatomic, strong) id<MTLDevice> device;
-@property (nonatomic, strong) MTLRenderPassDescriptor *renderPassDescriptor;
-@property (nonatomic, strong) id<MTLCommandBuffer> commandBuffer;
-
-- (instancetype)initWithMTKView:(MTKView *)mtkView
-                         device:(id<MTLDevice>)device
-           renderPassDescriptor:(MTLRenderPassDescriptor *)renderPassDescriptor
-                  commandBuffer:(id<MTLCommandBuffer>)commandBuffer;
-
-@end
+typedef struct {
+    MTKView *mtkView;
+    id<MTLDevice> device;
+    MTLRenderPassDescriptor *renderPassDescriptor;
+    id<MTLCommandBuffer> commandBuffer;
+} MHBackendResource;
 
 #else
 
-#import <Foundation/Foundation.h>
-#import "MHFoundation.h"
-
-MH_EXPORT
-@interface MHBackendResource : NSObject
-
-@end
+typedef struct {
+} MHBackendResource;
 
 #endif

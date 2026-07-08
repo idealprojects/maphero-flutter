@@ -16,11 +16,11 @@ typedef NS_ENUM(NSUInteger, MHCirclePitchAlignment) {
     /**
      The circle is aligned to the plane of the map.
      */
-    MHCirclePitchAlignmentMap,
+     MHCirclePitchAlignmentMap,
     /**
      The circle is aligned to the plane of the viewport.
      */
-    MHCirclePitchAlignmentViewport,
+     MHCirclePitchAlignmentViewport,
 };
 
 /**
@@ -33,11 +33,11 @@ typedef NS_ENUM(NSUInteger, MHCircleScaleAlignment) {
     /**
      Circles are scaled according to their apparent distance to the camera.
      */
-    MHCircleScaleAlignmentMap,
+     MHCircleScaleAlignmentMap,
     /**
      Circles are not scaled.
      */
-    MHCircleScaleAlignmentViewport,
+     MHCircleScaleAlignmentViewport,
 };
 
 /**
@@ -50,11 +50,11 @@ typedef NS_ENUM(NSUInteger, MHCircleTranslationAnchor) {
     /**
      The circle is translated relative to the map.
      */
-    MHCircleTranslationAnchorMap,
+     MHCircleTranslationAnchorMap,
     /**
      The circle is translated relative to the viewport.
      */
-    MHCircleTranslationAnchorViewport,
+     MHCircleTranslationAnchorViewport,
 };
 
 /**
@@ -281,7 +281,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#paint-circle-pitch-scale"><code>circle-pitch-scale</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  
@@ -411,7 +411,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#paint-circle-translate"><code>circle-translate</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  
@@ -437,7 +437,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#paint-circle-translate"><code>circle-translate</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  
@@ -473,7 +473,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#paint-circle-translate-anchor"><code>circle-translate-anchor</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  

@@ -16,11 +16,11 @@ typedef NS_ENUM(NSUInteger, MHHillshadeIlluminationAnchor) {
     /**
      The hillshade illumination is relative to the north direction.
      */
-    MHHillshadeIlluminationAnchorMap,
+     MHHillshadeIlluminationAnchorMap,
     /**
      The hillshade illumination is relative to the top of the viewport.
      */
-    MHHillshadeIlluminationAnchorViewport,
+     MHHillshadeIlluminationAnchorViewport,
 };
 
 /**

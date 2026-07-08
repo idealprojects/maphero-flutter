@@ -5,8 +5,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol MHFeature;
-@class MHPointFeature;
-@class MHPointFeatureCluster;
+@class MHPointFeatureClusterFeature;
+@class MHPointFeatureClusterFeatureCluster;
 @class MHShape;
 
 /**
@@ -22,7 +22,7 @@ typedef NSString *MHShapeSourceOption NS_STRING_ENUM;
  This option corresponds to the
  <a
  href="https://maplibre.org/maplibre-style-spec/#sources-geojson-cluster"><code>cluster</code></a>
- source property in the MapHero Style Spec.
+ source property in the MapLibre Style Spec.
 
  This option only affects point features within an ``MHShapeSource`` object; it
  is ignored when creating an ``MHComputedShapeSource`` object.
@@ -43,15 +43,6 @@ FOUNDATION_EXTERN MH_EXPORT const MHShapeSourceOption MHShapeSourceOptionCluster
  is ignored when creating an ``MHComputedShapeSource`` object.
  */
 FOUNDATION_EXTERN MH_EXPORT const MHShapeSourceOption MHShapeSourceOptionClusterRadius;
-
-/**
- An `NSNumber` object containing an integer; specifies the minimum number of points to form a
- cluster if clustering is enabled. The default value is 2.
-
- This option only affects point features within an ``MHShapeSource`` object; it
- is ignored when creating an ``MHComputedShapeSource`` object.
- */
-FOUNDATION_EXTERN MH_EXPORT const MHShapeSourceOption MHShapeSourceOptionClusterMinPoints;
 
 /**
  An `NSDictionary` object where the key is an `NSString`. The dictionary key will
@@ -80,7 +71,7 @@ FOUNDATION_EXTERN MH_EXPORT const MHShapeSourceOption MHShapeSourceOptionCluster
  This option corresponds to the
  <a
  href="https://maplibre.org/maplibre-style-spec/#sources-geojson-clusterProperties"><code>clusterProperties</code></a>
- source property in the MapHero Style Spec.
+ source property in the MapLibre Style Spec.
 
  This option only affects point features within an ``MHShapeSource`` object; it
  is ignored when creating an ``MHComputedShapeSource`` object.
@@ -95,7 +86,7 @@ FOUNDATION_EXTERN MH_EXPORT const MHShapeSourceOption MHShapeSourceOptionCluster
  This option corresponds to the
  <a
  href="https://maplibre.org/maplibre-style-spec/#sources-geojson-clusterMaxZoom"><code>clusterMaxZoom</code></a>
- source property in the MapHero Style Spec.
+ source property in the MapLibre Style Spec.
 
  This option only affects point features within an ``MHShapeSource`` object; it
  is ignored when creating an ``MHComputedShapeSource`` object.
@@ -110,7 +101,7 @@ FOUNDATION_EXTERN MH_EXPORT const MHShapeSourceOption
  This option corresponds to the
  <a
  href="https://maplibre.org/maplibre-style-spec/#sources-geojson-minzoom"><code>minzoom</code></a>
- source property in the MapHero Style Spec.
+ source property in the MapLibre Style Spec.
  */
 FOUNDATION_EXTERN MH_EXPORT const MHShapeSourceOption MHShapeSourceOptionMinimumZoomLevel;
 
@@ -122,7 +113,7 @@ FOUNDATION_EXTERN MH_EXPORT const MHShapeSourceOption MHShapeSourceOptionMinimum
  This option corresponds to the
  <a
  href="https://maplibre.org/maplibre-style-spec/#sources-geojson-maxzoom"><code>maxzoom</code></a>
- source property in the MapHero Style Spec.
+ source property in the MapLibre Style Spec.
  */
 FOUNDATION_EXTERN MH_EXPORT const MHShapeSourceOption MHShapeSourceOptionMaximumZoomLevel;
 
@@ -134,7 +125,7 @@ FOUNDATION_EXTERN MH_EXPORT const MHShapeSourceOption MHShapeSourceOptionMaximum
 
  This option corresponds to the
  <a href="https://maplibre.org/maplibre-style-spec/#sources-geojson-buffer"><code>buffer</code></a>
- source property in the MapHero Style Spec.
+ source property in the MapLibre Style Spec.
  */
 FOUNDATION_EXTERN MH_EXPORT const MHShapeSourceOption MHShapeSourceOptionBuffer;
 
@@ -146,7 +137,7 @@ FOUNDATION_EXTERN MH_EXPORT const MHShapeSourceOption MHShapeSourceOptionBuffer;
  This option corresponds to the
  <a
  href="https://maplibre.org/maplibre-style-spec/#sources-geojson-tolerance"><code>tolerance</code></a>
- source property in the MapHero Style Spec.
+ source property in the MapLibre Style Spec.
  */
 FOUNDATION_EXTERN MH_EXPORT const MHShapeSourceOption MHShapeSourceOptionSimplificationTolerance;
 
@@ -159,7 +150,7 @@ FOUNDATION_EXTERN MH_EXPORT const MHShapeSourceOption MHShapeSourceOptionSimplif
  This option corresponds to the
  <a
  href="https://maplibre.org/maplibre-style-spec/sources/#geojson-lineMetrics"><code>lineMetrics</code></a>
- source property in the MapHero Style Spec.
+ source property in the MapLibre Style Spec.
  */
 FOUNDATION_EXTERN MH_EXPORT const MHShapeSourceOption MHShapeSourceOptionLineDistanceMetrics;
 
@@ -242,7 +233,7 @@ MH_EXPORT
  for the source.
 
  This class supports the following options: ``MHShapeSourceOptionClustered``,
- ``MHShapeSourceOptionClusterRadius``, ``MHShapeSourceOptionClusterMinPoints``,
+ ``MHShapeSourceOptionClusterRadius``,
  ``MHShapeSourceOptionMaximumZoomLevelForClustering``,
  ``MHShapeSourceOptionMinimumZoomLevel``, ``MHShapeSourceOptionMinimumZoomLevel``,
  ``MHShapeSourceOptionBuffer``, and
@@ -286,7 +277,7 @@ MH_EXPORT
  source are not clipped or wrapped automatically.
 
  Unlike `-initWithIdentifier:shapes:options:`, this method accepts ``MHFeature``
- instances, such as ``MHPointFeature`` objects, whose attributes you can use when
+ instances, such as ``MHPointFeatureClusterFeature`` objects, whose attributes you can use when
  applying a predicate to ``MHVectorStyleLayer`` or configuring a style layer’s
  appearance.
 
@@ -392,14 +383,14 @@ MH_EXPORT
  This method supports pagination; you supply an offset (number of features to skip)
  and a maximum number of features to return.
 
- @param cluster An object of type ``MHPointFeatureCluster`` (that conforms to the
- ``MHPointFeatureCluster`` protocol).
+ @param cluster An object of type ``MHPointFeatureClusterFeatureCluster`` (that conforms to the
+ ``MHPointFeatureClusterFeatureCluster`` protocol).
  @param offset Number of features to skip.
  @param limit The maximum number of features to return
 
  @return An array of objects that conform to the ``MHFeature`` protocol.
  */
-- (NSArray<id<MHFeature>> *)leavesOfCluster:(MHPointFeatureCluster *)cluster
+- (NSArray<id<MHFeature>> *)leavesOfCluster:(MHPointFeatureClusterFeatureCluster *)cluster
                                       offset:(NSUInteger)offset
                                        limit:(NSUInteger)limit;
 
@@ -408,8 +399,8 @@ MH_EXPORT
  cluster *on the next zoom level*. The may include features that also conform to
  the ``MHCluster`` protocol (currently only objects of type ``MHCluster``).
 
- @param cluster An object of type ``MHPointFeatureCluster`` (that conforms to the
- ``MHPointFeatureCluster`` protocol).
+ @param cluster An object of type ``MHPointFeatureClusterFeatureCluster`` (that conforms to the
+ ``MHPointFeatureClusterFeatureCluster`` protocol).
 
  @return An array of objects that conform to the ``MHFeature`` protocol.
 
@@ -417,18 +408,18 @@ MH_EXPORT
     zoom level doesn't match the zoom level for expanding that cluster. See
     ``MHShapeSource/zoomLevelForExpandingCluster:``.
  */
-- (NSArray<id<MHFeature>> *)childrenOfCluster:(MHPointFeatureCluster *)cluster;
+- (NSArray<id<MHFeature>> *)childrenOfCluster:(MHPointFeatureClusterFeatureCluster *)cluster;
 
 /**
  Returns the zoom level at which the given cluster expands.
 
- @param cluster An object of type ``MHPointFeatureCluster`` (that conforms to the
- ``MHPointFeatureCluster`` protocol).
+ @param cluster An object of type ``MHPointFeatureClusterFeatureCluster`` (that conforms to the
+ ``MHPointFeatureClusterFeatureCluster`` protocol).
 
  @return Zoom level. This should be >= 0; any negative return value should be
     considered an error.
  */
-- (double)zoomLevelForExpandingCluster:(MHPointFeatureCluster *)cluster;
+- (double)zoomLevelForExpandingCluster:(MHPointFeatureClusterFeatureCluster *)cluster;
 
 @end
 

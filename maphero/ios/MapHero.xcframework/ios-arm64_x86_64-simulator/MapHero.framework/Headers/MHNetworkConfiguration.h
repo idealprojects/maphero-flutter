@@ -1,7 +1,6 @@
 #import <Foundation/Foundation.h>
 
 #import "MHFoundation.h"
-#import "MHNetworkResponse.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -25,11 +24,6 @@ NS_ASSUME_NONNULL_BEGIN
  are not supported at this time.
  */
 - (NSURLSession *)sessionForNetworkConfiguration:(MHNetworkConfiguration *)configuration;
-
-- (NSMutableURLRequest *)willSendRequest:(NSMutableURLRequest *)request;
-
-- (MHNetworkResponse *)didReceiveResponse:(MHNetworkResponse *)response;
-
 @end
 
 /**
@@ -44,6 +38,11 @@ MH_EXPORT
  Delegate for the ``MHNetworkConfiguration`` class.
  */
 @property (nonatomic, weak) id<MHNetworkConfigurationDelegate> delegate;
+
+/**
+ Set Authentication token.
+ */
+@property (nonatomic, strong, nullable, readonly) NSString *token;
 
 /**
  Returns the shared instance of the ``MHNetworkConfiguration`` class.
@@ -67,7 +66,9 @@ MH_EXPORT
  > Note: Background sessions are not currently supported.
  */
 @property (atomic, strong, null_resettable) NSURLSessionConfiguration *sessionConfiguration;
+
 - (void)setToken:(nullable NSString *)token;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -6,13 +6,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class MHAnnotationImage;
-@class MHShape;
-@class MHPolyline;
-@class MHPolygon;
-
 @protocol MHMapSnapshotterDelegate;
-@protocol MHAnnotation;
 
 /**
  An overlay that is placed within a ``MHMapSnapshot``.
@@ -74,8 +68,7 @@ MH_EXPORT
 
  @param styleURL URL of the map style to snapshot. The URL may be a full HTTP,
     HTTPS URL, canonical URL or a path to a local file relative to
-    the application's resource path. Specify `nil` for the default style.
- @param camera The camera representing the viewport visible in the snapshot.
+    the application’s resource path. Specify `nil` for the default style.
  @param size The image size.
  */
 - (instancetype)initWithStyleURL:(nullable NSURL *)styleURL
@@ -85,14 +78,10 @@ MH_EXPORT
 // MARK: - Configuring the Map
 
 /**
- Whether to include the MapHero logo. Note this is not required.
+ :nodoc:
+ Whether to include the MapLibre logo. Note this is not required.
  */
 @property (nonatomic, readwrite) BOOL showsLogo;
-
-/**
- Whether to add attribution from the sources on the snapshots. Enabled by default.
- */
-@property (nonatomic, readwrite) BOOL showsAttribution;
 
 /**
  URL of the map style to snapshot.
@@ -256,35 +245,6 @@ MH_EXPORT
 - (instancetype)initWithOptions:(MHMapSnapshotOptions *)options NS_DESIGNATED_INITIALIZER;
 
 /**
- Adds an annotation to the snapshotter.
-
- > Note: ``MHMultiPolyline``, ``MHMultiPolyline``, ``MHMultiPolyline``, and
-    ``MHPointCollection`` objects cannot be added to the snapshotter at this time.
-    Any multipoint, multipolyline, multipolygon, shape or point collection
-    object that is specified is silently ignored.
-
- @param annotation The annotation object to add to the receiver. This object
-    must conform to the ``MHAnnotation`` protocol. The snapshotter retains the
-    annotation object.
- */
-- (void)addAnnotation:(id<MHAnnotation>)annotation;
-
-/**
- Adds an array of annotations to the snapshotter.
-
- > Note: ``MHMultiPolyline``, ``MHMultiPolyline``, and ``MHMultiPolyline`` objects
-    cannot be added to the snapshotter at this time. Nor can ``MHMultiPoint``
-    objects that are not instances of ``MHPolyline`` or ``MHPolyline``. Any
-    multipoint, multipolyline, multipolygon, or shape collection objects that
-    are specified are silently ignored.
-
- @param annotations An array of annotation objects. Each object in the array
-    must conform to the ``MHAnnotation`` protocol. The snapshotter retains each
-    individual annotation object.
- */
-- (void)addAnnotations:(NSArray<id<MHAnnotation>> *)annotations;
-
-/**
  Starts the snapshot creation and executes the specified block with the result.
 
  @param completionHandler The block to call with a finished snapshot. The block
@@ -401,89 +361,6 @@ MH_EXPORT
 - (void)mapSnapshotter:(MHMapSnapshotter *)snapshotter didFinishLoadingStyle:(MHStyle *)style;
 
 - (void)mapSnapshotter:(MHMapSnapshotter *)snapshotter didFailLoadingImageNamed:(NSString *)name;
-
-/**
- Returns an annotation image object to mark the given point annotation object on
- the map.
-
- Implement this method to mark a point annotation with a static image.
-
- Static annotation images use less memory and draw more quickly than annotation
- views. On the other hand, annotation views are compatible with UIKit, Core
- Animation, and other Cocoa Touch frameworks.
-
- @param snapshotter The snapshotter that has just loaded a style.
- @param annotation The object representing the annotation that is about to be
-    displayed.
- @return The annotation image object to display for the given annotation or
-    `nil` if you want to display the default marker image or an annotation view.
-*/
-- (nullable MHAnnotationImage *)mapSnapshotter:(MHMapSnapshotter *)snapshotter
-                             imageForAnnotation:(id<MHAnnotation>)annotation;
-
-/**
- Returns the alpha value to use when rendering a shape annotation.
-
- A value of `0.0` results in a completely transparent shape. A value of `1.0`,
- the default, results in a completely opaque shape.
-
- This method sets the opacity of an entire shape, inclusive of its stroke and
- fill. To independently set the values for stroke or fill, specify an alpha
- component in the color returned by `-mapSnapshotter:strokeColorForShapeAnnotation:` or
- `-mapSnapshotter:fillColorForPolygonAnnotation:`.
-
- @param snapshotter The snapshotter that has just loaded a style.
- @param annotation The annotation being rendered.
- @return An alpha value between `0` and `1.0`.
- */
-- (CGFloat)mapSnapshotter:(MHMapSnapshotter *)snapshotter
-    alphaForShapeAnnotation:(MHShape *)annotation;
-
-/**
- Returns the color to use when rendering the outline of a shape annotation.
-
- The default stroke color is MHColor.whiteColor.
-
- Opacity may be set by specifying an alpha component. The default alpha value is
- `1.0` and results in a completely opaque stroke.
-
- @param snapshotter The snapshotter that has just loaded a style.
- @param annotation The annotation being rendered.
- @return A color to use for the shape outline.
-
- */
-- (MHColor *)mapSnapshotter:(MHMapSnapshotter *)snapshotter
-    strokeColorForShapeAnnotation:(MHShape *)annotation;
-
-/**
- Returns the color to use when rendering the fill of a polygon annotation.
-
- The default fill color is the MHColor.whiteColor.
-
- Opacity may be set by specifying an alpha component. The default alpha value is
- `1.0` and results in a completely opaque shape.
-
- @param snapshotter The snapshotter that has just loaded a style.
- @param annotation The annotation being rendered.
- @return The polygon’s interior fill color.
-
- */
-- (MHColor *)mapSnapshotter:(MHMapSnapshotter *)snapshotter
-    fillColorForPolygonAnnotation:(MHPolygon *)annotation;
-
-/**
- Returns the line width in points to use when rendering the outline of a
- polyline annotation.
-
- By default, the polyline is outlined with a line `3.0` points wide.
-
- @param snapshotter The snapshotter that has just loaded a style.
- @param annotation The annotation being rendered.
- @return A line width for the polyline, measured in points.
-
- */
-- (CGFloat)mapSnapshotter:(MHMapSnapshotter *)snapshotter
-    lineWidthForPolylineAnnotation:(MHPolyline *)annotation;
 
 @end
 

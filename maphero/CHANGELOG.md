@@ -1,3 +1,6 @@
+## 1.0.4
+  Update the iOS MapHero SDK to 1.0.4, vendored directly as an XCFramework from the maphero-native 1.0.4 release (device + simulator slices).
+
 ## 0.0.23
   Migrate to MapHero SDK
 

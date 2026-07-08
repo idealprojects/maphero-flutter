@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name             = 'maphero_gl'
   s.static_framework = true
-  s.version          = '1.0.3'
+  s.version          = '1.0.4'
   s.summary          = 'MapHero Flutter plugin'
   s.description      = <<-DESC
 MapHero Flutter plugin.
@@ -16,11 +16,12 @@ MapHero Flutter plugin.
   # Flutter plugin sources
   s.source_files     = 'maphero_gl/Sources/maphero/**/*'
 
-  # Use local XCFramework
+  # Use the local MapHero XCFramework vendored from the maphero-native 1.0.4 release
+  # (https://github.com/idealprojects/maphero-native/releases/tag/1.0.4).
+  s.vendored_frameworks = 'MapHero.xcframework'
 
   # Flutter dependency
-  s.dependency 'MapHero', '1.0.3'
-#   s.vendored_frameworks = 'MapHero.xcframework'
+#   s.dependency 'MapHero', '1.0.4'
 
 #   s.public_header_files = 'maphero/Sources/maphero/**/*.{h}'
 

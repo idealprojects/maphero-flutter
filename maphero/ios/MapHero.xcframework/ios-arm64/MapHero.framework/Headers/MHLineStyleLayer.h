@@ -17,18 +17,18 @@ typedef NS_ENUM(NSUInteger, MHLineCap) {
      A cap with a squared-off end which is drawn to the exact endpoint of the
      line.
      */
-    MHLineCapButt,
+     MHLineCapButt,
     /**
      A cap with a rounded end which is drawn beyond the endpoint of the line at
      a radius of one-half of the line's width and centered on the endpoint of
      the line.
      */
-    MHLineCapRound,
+     MHLineCapRound,
     /**
      A cap with a squared-off end which is drawn beyond the endpoint of the line
      at a distance of one-half of the line's width.
      */
-    MHLineCapSquare,
+     MHLineCapSquare,
 };
 
 /**
@@ -42,18 +42,18 @@ typedef NS_ENUM(NSUInteger, MHLineJoin) {
      A join with a squared-off end which is drawn beyond the endpoint of the
      line at a distance of one-half of the line's width.
      */
-    MHLineJoinBevel,
+     MHLineJoinBevel,
     /**
      A join with a rounded end which is drawn beyond the endpoint of the line at
      a radius of one-half of the line's width and centered on the endpoint of
      the line.
      */
-    MHLineJoinRound,
+     MHLineJoinRound,
     /**
      A join with a sharp, angled corner which is drawn with the outer sides
      beyond the endpoint of the path until they meet.
      */
-    MHLineJoinMiter,
+     MHLineJoinMiter,
 };
 
 /**
@@ -66,11 +66,11 @@ typedef NS_ENUM(NSUInteger, MHLineTranslationAnchor) {
     /**
      The line is translated relative to the map.
      */
-    MHLineTranslationAnchorMap,
+     MHLineTranslationAnchorMap,
     /**
      The line is translated relative to the viewport.
      */
-    MHLineTranslationAnchorViewport,
+     MHLineTranslationAnchorViewport,
 };
 
 /**
@@ -329,7 +329,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#paint-line-dasharray"><code>line-dasharray</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  
@@ -514,7 +514,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#paint-line-translate"><code>line-translate</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  
@@ -540,7 +540,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#paint-line-translate"><code>line-translate</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  
@@ -576,7 +576,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#paint-line-translate-anchor"><code>line-translate-anchor</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  

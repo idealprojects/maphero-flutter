@@ -15,7 +15,7 @@ FOUNDATION_EXTERN MH_EXPORT const NSUInteger MHClusterIdentifierInvalid;
  the ``MHFeature`` protocol) conform to if they represent clusters.
 
  Currently the only class that conforms to ``MHCluster`` is
- ``MHPointFeatureCluster`` (a subclass of ``MHPointFeatureCluster``).
+ ``MHPointFeatureClusterFeatureCluster`` (a subclass of ``MHPointFeatureClusterFeatureCluster``).
 
  To check if a feature is a cluster, check conformity to ``MHCluster``, for
  example:
@@ -23,7 +23,7 @@ FOUNDATION_EXTERN MH_EXPORT const NSUInteger MHClusterIdentifierInvalid;
  ```swift
  let shape = try! MHShape(data: clusterShapeData, encoding: String.Encoding.utf8.rawValue)
 
- guard let pointFeature = shape as? MHPointFeature else {
+ guard let pointFeature = shape as? MHPointFeatureClusterFeature else {
      throw ExampleError.unexpectedFeatureType
  }
 
@@ -33,8 +33,8 @@ FOUNDATION_EXTERN MH_EXPORT const NSUInteger MHClusterIdentifierInvalid;
  }
 
  // Currently the only supported class that conforms to ``MHCluster`` is
- // ``MHPointFeatureCluster``
- guard cluster is MHPointFeatureCluster else {
+ // ``MHPointFeatureClusterFeatureCluster``
+ guard cluster is MHPointFeatureClusterFeatureCluster else {
      throw ExampleError.unexpectedFeatureType
  }
  ```

@@ -17,11 +17,11 @@ typedef NS_ENUM(NSUInteger, MHFillExtrusionTranslationAnchor) {
     /**
      The fill extrusion is translated relative to the map.
      */
-    MHFillExtrusionTranslationAnchorMap,
+     MHFillExtrusionTranslationAnchorMap,
     /**
      The fill extrusion is translated relative to the viewport.
      */
-    MHFillExtrusionTranslationAnchorViewport,
+     MHFillExtrusionTranslationAnchorViewport,
 };
 
 /**
@@ -166,7 +166,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#paint-fill-extrusion-vertical-gradient"><code>fill-extrusion-vertical-gradient</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  
@@ -272,7 +272,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#paint-fill-extrusion-translate"><code>fill-extrusion-translate</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  
@@ -298,7 +298,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#paint-fill-extrusion-translate"><code>fill-extrusion-translate</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  
@@ -334,7 +334,7 @@ MH_EXPORT
  
  This attribute corresponds to the <a
  href="https://maplibre.org/maplibre-style-spec/#paint-fill-extrusion-translate-anchor"><code>fill-extrusion-translate-anchor</code></a>
- layout property in the MapHero Style Spec.
+ layout property in the MapLibre Style Spec.
  
  You can set this property to an expression containing any of the following:
  

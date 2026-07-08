@@ -143,6 +143,25 @@ typedef NS_ENUM(NSUInteger, MHTileCoordinateSystem) {
 };
 
 /**
+ The encoding formula used to generate the raster-dem tileset
+*/
+
+typedef NS_ENUM(NSUInteger, MHDEMEncoding) {
+
+  /**
+   Raster tiles generated with the [Mapbox encoding
+   formula](https://docs.mapbox.com/help/troubleshooting/access-elevation-data/#mapbox-terrain-rgb).
+  */
+  MHDEMEncodingMapbox = 0,
+
+  /**
+   Raster tiles generated with the [Mapzen Terrarium encoding
+   formula](https://aws.amazon.com/public-datasets/terrain/).
+  */
+  MHDEMEncodingTerrarium
+};
+
+/**
  ``MHTileSource`` is a map content source that supplies map tiles to be shown on
  the map. The location of and metadata about the tiles are defined either by an
  option dictionary or by an external file that conforms to the
@@ -184,15 +203,6 @@ MH_EXPORT
  is loaded.
  */
 @property (nonatomic, copy, readonly) NSArray<MHAttributionInfo *> *attributionInfos;
-
-/**
- The attribution HTML string associated with this source.
-
- By default, this is nil. If the source is initialized with a
- configuration URL, this is nil until the configuration JSON file
- is loaded.
- */
-@property (nonatomic, copy, nullable, readonly) NSString *attributionHTMLString;
 
 @end
 
