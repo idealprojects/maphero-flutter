@@ -1,3 +1,6 @@
+## 1.2.0
+  Update the iOS MapHero SDK to 1.2.0. Fixes the broken class rename so `MHPointFeature`/`MHPointFeatureCluster` are exported correctly — 1.0.4 shipped mangled `MHPointFeatureClusterFeature` names, which broke iOS builds. Also renames the `MHWellKnownTileServer` case `MHMapLibre` to `MHMapHero`. Vendored as an XCFramework (device + simulator slices) from the maphero-native 1.2.0 release.
+
 ## 1.0.4
   Update the iOS MapHero SDK to 1.0.4, vendored directly as an XCFramework from the maphero-native 1.0.4 release (device + simulator slices).
 

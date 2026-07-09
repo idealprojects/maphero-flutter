@@ -1,6 +1,6 @@
 name: maphero_gl
 description: A Flutter plugin for integrating MapHero Maps inside a Flutter application on Android, iOS and web platforms.
-version: 1.0.4
+version: 1.2.0
 repository: https://github.com/idealprojects/maphero-flutter
 issue_tracker: https://github.com/idealprojects/maphero-flutter/issues
 
