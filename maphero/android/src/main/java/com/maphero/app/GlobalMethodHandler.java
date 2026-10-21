@@ -93,6 +93,10 @@ class GlobalMethodHandler implements MethodChannel.MethodCallHandler {
         OfflineManagerUtils.setOfflineTileCountLimit(
                 result, context, methodCall.<Number>argument("limit").longValue());
         break;
+      case "setApiKey":
+        MapHeroUtils.setApiKey(context, methodCall.<String>argument("apiKey"));
+        result.success(null);
+        break;
       case "setHttpHeaders":
         Map<String, String> headers = (Map<String, String>) methodCall.argument("headers");
 

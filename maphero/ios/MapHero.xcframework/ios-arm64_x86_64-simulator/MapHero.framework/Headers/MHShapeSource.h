@@ -22,7 +22,7 @@ typedef NSString *MHShapeSourceOption NS_STRING_ENUM;
  This option corresponds to the
  <a
  href="https://maplibre.org/maplibre-style-spec/#sources-geojson-cluster"><code>cluster</code></a>
- source property in the MapLibre Style Spec.
+ source property in the MapHero Style Spec.
 
  This option only affects point features within an ``MHShapeSource`` object; it
  is ignored when creating an ``MHComputedShapeSource`` object.
@@ -43,6 +43,15 @@ FOUNDATION_EXTERN MH_EXPORT const MHShapeSourceOption MHShapeSourceOptionCluster
  is ignored when creating an ``MHComputedShapeSource`` object.
  */
 FOUNDATION_EXTERN MH_EXPORT const MHShapeSourceOption MHShapeSourceOptionClusterRadius;
+
+/**
+ An `NSNumber` object containing an integer; specifies the minimum number of points to form a
+ cluster if clustering is enabled. The default value is 2.
+
+ This option only affects point features within an ``MHShapeSource`` object; it
+ is ignored when creating an ``MHComputedShapeSource`` object.
+ */
+FOUNDATION_EXTERN MH_EXPORT const MHShapeSourceOption MHShapeSourceOptionClusterMinPoints;
 
 /**
  An `NSDictionary` object where the key is an `NSString`. The dictionary key will
@@ -71,7 +80,7 @@ FOUNDATION_EXTERN MH_EXPORT const MHShapeSourceOption MHShapeSourceOptionCluster
  This option corresponds to the
  <a
  href="https://maplibre.org/maplibre-style-spec/#sources-geojson-clusterProperties"><code>clusterProperties</code></a>
- source property in the MapLibre Style Spec.
+ source property in the MapHero Style Spec.
 
  This option only affects point features within an ``MHShapeSource`` object; it
  is ignored when creating an ``MHComputedShapeSource`` object.
@@ -86,7 +95,7 @@ FOUNDATION_EXTERN MH_EXPORT const MHShapeSourceOption MHShapeSourceOptionCluster
  This option corresponds to the
  <a
  href="https://maplibre.org/maplibre-style-spec/#sources-geojson-clusterMaxZoom"><code>clusterMaxZoom</code></a>
- source property in the MapLibre Style Spec.
+ source property in the MapHero Style Spec.
 
  This option only affects point features within an ``MHShapeSource`` object; it
  is ignored when creating an ``MHComputedShapeSource`` object.
@@ -101,7 +110,7 @@ FOUNDATION_EXTERN MH_EXPORT const MHShapeSourceOption
  This option corresponds to the
  <a
  href="https://maplibre.org/maplibre-style-spec/#sources-geojson-minzoom"><code>minzoom</code></a>
- source property in the MapLibre Style Spec.
+ source property in the MapHero Style Spec.
  */
 FOUNDATION_EXTERN MH_EXPORT const MHShapeSourceOption MHShapeSourceOptionMinimumZoomLevel;
 
@@ -113,7 +122,7 @@ FOUNDATION_EXTERN MH_EXPORT const MHShapeSourceOption MHShapeSourceOptionMinimum
  This option corresponds to the
  <a
  href="https://maplibre.org/maplibre-style-spec/#sources-geojson-maxzoom"><code>maxzoom</code></a>
- source property in the MapLibre Style Spec.
+ source property in the MapHero Style Spec.
  */
 FOUNDATION_EXTERN MH_EXPORT const MHShapeSourceOption MHShapeSourceOptionMaximumZoomLevel;
 
@@ -125,7 +134,7 @@ FOUNDATION_EXTERN MH_EXPORT const MHShapeSourceOption MHShapeSourceOptionMaximum
 
  This option corresponds to the
  <a href="https://maplibre.org/maplibre-style-spec/#sources-geojson-buffer"><code>buffer</code></a>
- source property in the MapLibre Style Spec.
+ source property in the MapHero Style Spec.
  */
 FOUNDATION_EXTERN MH_EXPORT const MHShapeSourceOption MHShapeSourceOptionBuffer;
 
@@ -137,7 +146,7 @@ FOUNDATION_EXTERN MH_EXPORT const MHShapeSourceOption MHShapeSourceOptionBuffer;
  This option corresponds to the
  <a
  href="https://maplibre.org/maplibre-style-spec/#sources-geojson-tolerance"><code>tolerance</code></a>
- source property in the MapLibre Style Spec.
+ source property in the MapHero Style Spec.
  */
 FOUNDATION_EXTERN MH_EXPORT const MHShapeSourceOption MHShapeSourceOptionSimplificationTolerance;
 
@@ -150,7 +159,7 @@ FOUNDATION_EXTERN MH_EXPORT const MHShapeSourceOption MHShapeSourceOptionSimplif
  This option corresponds to the
  <a
  href="https://maplibre.org/maplibre-style-spec/sources/#geojson-lineMetrics"><code>lineMetrics</code></a>
- source property in the MapLibre Style Spec.
+ source property in the MapHero Style Spec.
  */
 FOUNDATION_EXTERN MH_EXPORT const MHShapeSourceOption MHShapeSourceOptionLineDistanceMetrics;
 
@@ -233,7 +242,7 @@ MH_EXPORT
  for the source.
 
  This class supports the following options: ``MHShapeSourceOptionClustered``,
- ``MHShapeSourceOptionClusterRadius``,
+ ``MHShapeSourceOptionClusterRadius``, ``MHShapeSourceOptionClusterMinPoints``,
  ``MHShapeSourceOptionMaximumZoomLevelForClustering``,
  ``MHShapeSourceOptionMinimumZoomLevel``, ``MHShapeSourceOptionMinimumZoomLevel``,
  ``MHShapeSourceOptionBuffer``, and

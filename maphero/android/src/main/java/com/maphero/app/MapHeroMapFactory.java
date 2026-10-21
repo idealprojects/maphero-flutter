@@ -28,6 +28,10 @@ public class MapHeroMapFactory extends PlatformViewFactory {
   @Override
   public PlatformView create(Context context, int id, Object args) {
     Map<String, Object> params = (Map<String, Object>) args;
+    // Before anything builds a map: the key has to be on the SDK when the first request goes out.
+    if (params.get("apiKey") instanceof String) {
+      MapHeroUtils.setApiKey(context, (String) params.get("apiKey"));
+    }
     final MapHeroMapBuilder builder = new MapHeroMapBuilder();
 
     Convert.interpretMapHeroMapOptions(params.get("options"), builder, context);

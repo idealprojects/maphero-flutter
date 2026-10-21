@@ -17,6 +17,16 @@ public class MapHeroMapsPlugin: NSObject, FlutterPlugin {
 
         channel.setMethodCallHandler { methodCall, result in
             switch methodCall.method {
+            case "setApiKey":
+                guard let arguments = methodCall.arguments as? [String: Any],
+                      let apiKey = arguments["apiKey"] as? String
+                else {
+                    result(FlutterError(code: "setApiKeyError", message: "could not decode arguments", details: nil))
+                    return
+                }
+                // The SDK sends it as X-API-Key (with the bundle identifier) on every request.
+                MHSettings.apiKey = apiKey
+                result(nil)
             case "setHttpHeaders":
                 guard let arguments = methodCall.arguments as? [String: Any],
                       let headers = arguments["headers"] as? [String: String]
@@ -29,8 +39,12 @@ public class MapHeroMapsPlugin: NSObject, FlutterPlugin {
                     result(nil)
                     return
                 }
-                let sessionConfig = URLSessionConfiguration.default
-                sessionConfig.httpAdditionalHeaders = headers // your headers here
+                // Merge onto the SDK's configuration rather than replacing it, so headers it
+                // already sends (the API key among them) survive a call for an unrelated header.
+                let sessionConfig = MHNetworkConfiguration.sharedManager.sessionConfiguration ?? URLSessionConfiguration.default
+                var merged = sessionConfig.httpAdditionalHeaders ?? [:]
+                for (name, value) in headers { merged[name] = value }
+                sessionConfig.httpAdditionalHeaders = merged
                 MHNetworkConfiguration.sharedManager.sessionConfiguration = sessionConfig
                 result(nil)
             case "installOfflineMapTiles":

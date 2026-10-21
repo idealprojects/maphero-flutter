@@ -37,6 +37,10 @@ class MapHeroMapController: NSObject, FlutterPlatformView, MHMapViewDelegate, Ma
         arguments args: Any?,
         registrar: FlutterPluginRegistrar
     ) {
+        // Before the map view exists: its first request already needs the key.
+        if let args = args as? [String: Any], let apiKey = args["apiKey"] as? String, !apiKey.isEmpty {
+            MHSettings.apiKey = apiKey
+        }
         mapView = MHMapView(frame: frame)
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mapView.logoView.isHidden = false

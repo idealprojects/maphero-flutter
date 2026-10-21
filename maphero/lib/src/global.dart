@@ -26,6 +26,14 @@ Future<dynamic> setOffline(bool offline) => _globalChannel.invokeMethod(
       },
     );
 
+/// Sets the MapHero API key for every map in the app.
+///
+/// Equivalent to passing `token` to [MapHeroMap], for apps that want to set it once at startup.
+/// The native SDK sends it as `X-API-Key`; you do not need [setHttpHeaders] for authentication.
+Future<void> setApiKey(String apiKey) {
+  return _globalChannel.invokeMethod('setApiKey', <String, dynamic>{'apiKey': apiKey});
+}
+
 Future<void> setHttpHeaders(Map<String, String> headers) {
   return _globalChannel.invokeMethod(
     'setHttpHeaders',

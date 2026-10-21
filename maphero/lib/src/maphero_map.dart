@@ -69,9 +69,13 @@ class MapHeroMap extends StatefulWidget {
         ),
         assert(annotationOrder.length <= 4),
         assert(annotationConsumeTapEvents.length > 0) {
-    _globalChannel1.invokeMethod('setHttpHeaders', {
-      "headers": {"map-token": token}
-    });
+    // The key goes to the native SDK's own setter, which sends it as X-API-Key on every request
+    // (with the app's package or bundle beside it). It is also in the creation params below, so it
+    // is in place before the native map exists even if this call has not been handled yet.
+    final apiKey = token;
+    if (apiKey != null && apiKey.isNotEmpty) {
+      _globalChannel1.invokeMethod('setApiKey', {'apiKey': apiKey});
+    }
   }
 
   /// Defines the layer order of annotations displayed on map
@@ -82,6 +86,10 @@ class MapHeroMap extends StatefulWidget {
   /// android. However if you do so annotations will not work.
   final List<AnnotationType> annotationOrder;
 
+  /// Your publishable MapHero API key (`mh_pk_...`).
+  ///
+  /// This is the whole setup: the native SDK sends it as `X-API-Key` on every request the map
+  /// makes. Never pass an `mh_sk_` secret key; anything compiled into an app can be extracted.
   final String? token;
 
   /// Defines the layer order of click annotations
@@ -275,6 +283,7 @@ class _MapHeroMapState extends State<MapHeroMap> {
       'styleString': widget.styleString,
       'options': _MapHeroMapOptions.fromWidget(widget).toMap(),
       'dragEnabled': widget.dragEnabled,
+      if (widget.token != null && widget.token!.isNotEmpty) 'apiKey': widget.token,
       if (widget.iosLongClickDuration != null)
         'iosLongClickDurationMilliseconds':
             widget.iosLongClickDuration!.inMilliseconds,

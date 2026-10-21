@@ -29,7 +29,6 @@ abstract class MapHeroHttpRequestUtil {
                   if (header.getValue() == null || header.getValue().trim().isEmpty()) {
                     builder.removeHeader(header.getKey());
                   } else {
-                      Log.d("Key-Value", "header.getKey(): "+header.getKey() + " header.getValue(): " + header.getValue());
                     builder.header(header.getKey(), header.getValue());
                   }
                 }
